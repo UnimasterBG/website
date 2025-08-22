@@ -1,0 +1,297 @@
+/* УниМастер - Допълнителни стилове */
+
+/* Основни цветове за различните услуги */
+:root {
+    --color-mazilka: #3498db;
+    --color-zamazka: #e67e22;
+    --color-beton: #95a5a6;
+    --color-shpaklovka: #2ecc71;
+    --color-izolatsia: #e74c3c;
+    --color-stroitelstvo: #34495e;
+    --color-primary: #2c3e50;
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Специални карти за услуги */
+.service-card {
+    border: none;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--service-color, #3498db), transparent);
+    transition: height 0.3s ease;
+}
+
+.service-card:hover::before {
+    height: 100%;
+    opacity: 0.1;
+}
+
+.service-card[data-service="mazilka"] {
+    --service-color: var(--color-mazilka);
+}
+
+.service-card[data-service="zamazka"] {
+    --service-color: var(--color-zamazka);
+}
+
+.service-card[data-service="beton"] {
+    --service-color: var(--color-beton);
+}
+
+.service-card[data-service="shpaklovka"] {
+    --service-color: var(--color-shpaklovka);
+}
+
+.service-card[data-service="izolatsia"] {
+    --service-color: var(--color-izolatsia);
+}
+
+.service-card[data-service="stroitelstvo"] {
+    --service-color: var(--color-stroitelstvo);
+}
+
+/* Процеси със специфични цветове */
+.process-mazilka { border-left-color: var(--color-mazilka); }
+.process-zamazka { border-left-color: var(--color-zamazka); }
+.process-beton { border-left-color: var(--color-beton); }
+.process-shpaklovka { border-left-color: var(--color-shpaklovka); }
+.process-izolatsia { border-left-color: var(--color-izolatsia); }
+.process-stroitelstvo { border-left-color: var(--color-stroitelstvo); }
+
+/* Техника под наем - градиенти */
+.equipment-card.mazilka-equipment {
+    background: linear-gradient(135deg, var(--color-mazilka) 0%, #2980b9 100%);
+}
+
+.equipment-card.zamazka-equipment {
+    background: linear-gradient(135deg, var(--color-zamazka) 0%, #d35400 100%);
+}
+
+.equipment-card.beton-equipment {
+    background: linear-gradient(135deg, var(--color-beton) 0%, #7f8c8d 100%);
+}
+
+/* Референции секция */
+.reference-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    border-left: 4px solid var(--color-primary);
+}
+
+.reference-card.mazilka-ref { border-left-color: var(--color-mazilka); }
+.reference-card.zamazka-ref { border-left-color: var(--color-zamazka); }
+.reference-card.beton-ref { border-left-color: var(--color-beton); }
+.reference-card.shpaklovka-ref { border-left-color: var(--color-shpaklovka); }
+.reference-card.izolatsia-ref { border-left-color: var(--color-izolatsia); }
+.reference-card.stroitelstvo-ref { border-left-color: var(--color-stroitelstvo); }
+
+/* Галерия */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.gallery-item::after {
+    content: 'Преди/След';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(52, 152, 219, 0.9);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+/* Мобилни оптимизации */
+@media (max-width: 768px) {
+    .sticky-contacts {
+        bottom: 20px;
+        top: auto;
+        right: 20px;
+        transform: none;
+        display: flex;
+        flex-direction: row;
+        border-radius: 25px;
+        padding: 10px;
+    }
+    
+    .contact-btn {
+        margin-bottom: 0;
+        margin-right: 10px;
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+    }
+    
+    .contact-btn:last-child {
+        margin-right: 0;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .service-card {
+        margin-bottom: 30px;
+    }
+}
+
+/* Форма за контакт - подобрени стилове */
+.contact-form .form-control {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.contact-form .form-control:focus {
+    background: white;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+/* Loader за референции */
+.references-loader {
+    display: none;
+}
+
+.references-content {
+    display: none;
+}
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Допълнителни стилове за нотификации */
+.notification {
+    border-radius: 8px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Подобрени модални диалози */
+.modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.modal-header {
+    border-bottom: 1px solid #e9ecef;
+    background: #f8f9fa;
+    border-radius: 15px 15px 0 0;
+}
+
+/* Hover ефекти за бутони */
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+.btn-outline-light:hover {
+    transform: translateY(-2px);
+}
+
+/* Стилизирани селект меню */
+.form-control {
+    border-radius: 8px;
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+/* Footer подобрения */
+footer a:hover {
+    color: var(--color-primary) !important;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Прости стилове за галерията */
+.gallery-filter.active {
+    background-color: #3498db !important;
+    color: white !important;
+    border-color: #3498db !important;
+}
+
+.gallery-photo {
+    transition: opacity 0.3s ease;
+}
+
+.gallery-photo.hidden {
+    display: none !important;
+}
+
+.photo-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.photo-item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover img {
+    transform: scale(1.05);
+}
+
+.photo-item:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 576px) {
+    .photo-item img {
+        height: 100px;
+    }
+}

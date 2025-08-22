@@ -1,533 +1,1111 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Унимастер</title>
-    <link rel="stylesheet" href="fontawesome-5.5/css/all.min.css" />
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>УниМастер - Строителни и довършителни услуги</title>
+    <meta name="description" content="Професионални строителни услуги - мазилка с турбозол, замазки с хеликоптер, фасадна изолация, техника под наем в цяла България">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome-5.5/css/all.min.css">
     <link rel="stylesheet" href="slick/slick.css">
     <link rel="stylesheet" href="slick/slick-theme.css">
     <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/tooplate-infinite-loop.css" />
-
-
-  </head>
-  <body>    
-    <!-- Hero section -->
-    <section id="infinite" class="text-white tm-font-big tm-parallax">
-      <!-- Navigation -->
-      <nav class="navbar navbar-expand-md tm-navbar" id="tmNav">              
-        <div class="container">   
-          <div class="tm-next">
-              <a href="#infinite" class="navbar-brand">Унимастер</a>
-          </div>             
-            
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars navbar-toggler-icon"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-              
-              <li class="nav-item">
-                  <a class="nav-link tm-nav-link" href="#infinite">Начало</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link tm-nav-link" href="#whatwedo">Какво Правим</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link tm-nav-link" href="#gallery">Снимки</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link tm-nav-link" href="#contact">Свържете се с нас</a>
-              </li>    
-              <li class="nav-item">
-                  <a href="tel:0899172879" class="btn tm-btn-submit">Обади ни се</a>
-
-              </li>                
-            </ul>
-          </div>        
-        </div>
-      </nav>
-      
-      <div class="text-center tm-hero-text-container">
-        <div class="tm-hero-text-container-inner">
-            <h2 class="tm-hero-title">Унимастер</h2>
-            <p class="tm-hero-subtitle">
-              Строителни и довършителни услуги в цяла България
-              <br>Надежден партньор в строителството – от основите до последния детайл.
-            </p>
-        </div>        
-      </div>
-
-      <div class="tm-next tm-intro-next">
-        <a href="#whatwedo" class="text-center tm-down-arrow-link">
-          <i class="fas fa-2x fa-arrow-down tm-down-arrow"></i>
+    <link rel="stylesheet" href="css/tooplate-infinite-loop.css">
+    <link rel="stylesheet" href="css/unimaster-styles.css">
+    
+    <style>
+    /* Нови стилове за услугите */
+    .service-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        padding: 30px;
+        text-align: center;
+        height: 100%;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .service-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        color: white;
+        font-size: 2rem;
+    }
+    
+    .equipment-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease;
+    }
+    
+    .equipment-card:hover {
+        transform: scale(1.05);
+    }
+    
+    .process-step {
+        background: white;
+        border-left: 4px solid var(--step-color, #3498db);
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 0 5px 5px 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .sticky-contacts {
+        position: fixed;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        z-index: 1000;
+        background: rgba(52, 152, 219, 0.9);
+        padding: 15px;
+        border-radius: 50px;
+        backdrop-filter: blur(10px);
+    }
+    
+    .contact-btn {
+        display: block;
+        width: 50px;
+        height: 50px;
+        background: white;
+        color: #3498db;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 50px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .contact-btn:hover {
+        background: #3498db;
+        color: white;
+        transform: scale(1.1);
+        text-decoration: none;
+    }
+    
+    /* Hero секция */
+    .hero-section {
+        background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8)), 
+                    url('img/infinite-loop-01.jpg') center/cover;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        color: white;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        opacity: 0.9;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+    
+    .navbar-custom {
+        background: rgba(44, 62, 80, 0.95);
+        backdrop-filter: blur(10px);
+    }
+    
+    .price-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #e74c3c;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+    }
+    
+    @media (max-width: 768px) {
+        .hero-title { font-size: 2.5rem; }
+        .sticky-contacts { 
+            bottom: 20px;
+            top: auto;
+            right: 20px;
+            transform: none;
+            display: flex;
+            flex-direction: row;
+            border-radius: 25px;
+            padding: 10px;
+        }
+        .contact-btn { 
+            width: 40px; 
+            height: 40px; 
+            line-height: 40px; 
+            margin-bottom: 0;
+            margin-right: 10px;
+        }
+        .contact-btn:last-child { margin-right: 0; }
+        .section-title { font-size: 2rem; }
+    }
+    </style>
+</head>
+<body>
+    <!-- Залепени контакти -->
+    <div class="sticky-contacts">
+        <a href="tel:+359899172879" class="contact-btn" title="Обади се">
+            <i class="fas fa-phone"></i>
         </a>
-      </div>      
-    </section>
-
-   <section id="whatwedo" class="tm-section-pad-top">
-  <div class="container">
-    <div class="row tm-content-box">
-      <div class="col-lg-12 col-xl-12">
-        <div class="tm-intro-text-container">
-          <h2 class="tm-text-primary mb-4 tm-section-title">Комплексни строителни и довършителни решения</h2>
-          <p class="mb-4 tm-intro-text">
-            В "Унимастер" предлагаме пълен спектър от услуги в строителството и довършителните работи. Работим както по частни, така и по обществени проекти в цялата страна.
-          </p>
-          <p class="mb-4 tm-intro-text">Нашите основни услуги включват:</p>
-          <ul class="mb-4 tm-intro-text">
-            <li><strong>Груб строеж</strong> – изграждане на жилищни и промишлени сгради от основи до покрив</li>
-            <li><strong>Ремонт и реконструкция</strong> – саниране, преустройства и конструктивни подобрения</li>
-            <li><strong>Довършителни дейности</strong> – шпакловки, мазилки, боядисване, фаянс, ламинат, окачени тавани и др.</li>
-            <li><strong>Изолации и фасадни решения</strong> – топло-, хидро- и шумоизолации</li>
-            <li><strong>Проектиране и консултации</strong> – съдействие от идеята до изпълнението</li>
-          </ul>
-          <p class="mb-4 tm-intro-text">
-            Ние се стремим да осигурим не само високо качество, но и пълна прозрачност, точност и спазване на срокове – винаги и навсякъде в България.
-          </p>
-        </div>
-      </div>
+        <a href="viber://chat?number=359899172879" class="contact-btn" title="Viber">
+            <i class="fab fa-viber"></i>
+        </a>
+        <a href="https://wa.me/359899172879" class="contact-btn" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:a10@abv.bg" class="contact-btn" title="Имейл">
+            <i class="fas fa-envelope"></i>
+        </a>
     </div>
-  </div>
+
+<!-- Модерен Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top modern-navbar">
+    <div class="container">
+        <!-- Лого и име -->
+        <a class="navbar-brand brand-container" href="#home">
+            <img src="img/2eda68c1-7017-4948-8080-28b33368cd08.jpg" alt="УниМастер ЕООД" class="navbar-logo">
+            <div class="brand-info">
+                <span class="brand-name">УниМастер</span>
+                <small class="brand-subtitle">ЕООД</small>
+            </div>
+        </a>
+        
+        <!-- Mobile toggle -->
+        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="toggler-line"></span>
+            <span class="toggler-line"></span>
+            <span class="toggler-line"></span>
+        </button>
+        
+        <!-- Navigation Menu -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#home">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span>Начало</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">
+                        <i class="fas fa-tools nav-icon"></i>
+                        <span>Услуги</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#equipment">
+                        <i class="fas fa-truck nav-icon"></i>
+                        <span>Техника</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#gallery">
+                        <i class="fas fa-images nav-icon"></i>
+                        <span>Галерия</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#references">
+                        <i class="fas fa-star nav-icon"></i>
+                        <span>Референции</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">
+                        <i class="fas fa-envelope nav-icon"></i>
+                        <span>Контакти</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <!-- Contact Info -->
+            <div class="navbar-contact">
+                <div class="contact-number">
+                    <a href="tel:+359899172879" class="phone-link">
+                        <i class="fas fa-phone phone-icon"></i>
+                        <span class="phone-number">+359 899 172 879</span>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</nav>
+
+
+<!-- Hero секция - компактна -->
+<section id="home" class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto text-center">
+                <!-- По-малко лого -->
+                <div class="hero-logo mb-3">
+                    <img src="img/main-loggo.png" alt="УниМастер ЕООД" class="hero-logo-img-compact">
+                </div>
+                
+                <p class="hero-subtitle-compact">Професионални строителни и довършителни услуги</p>
+                <p class="hero-services mb-4">
+                    <span class="service-tag">Мазилка с турбозол</span>
+                    <span class="service-tag">Замазки с хеликоптер</span>
+                    <span class="service-tag">Фасадна изолация</span>
+                    <span class="service-tag">Техника под наем</span>
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-tools me-2"></i>Нашите услуги
+                    </a>
+                    <a href="#contact" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-phone me-2"></i>Искам оферта
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 
-            <!-- first row -->
-<div class="row tm-content-box"><!-- second row -->
-  <div class="col-lg-1">
-    <i class="fa fa-3x fa-chart-bar text-center tm-icon"></i>
-  </div>
-  <div class="col-lg-5">
-    <div class="tm-intro-text-container">
-      <h2 class="tm-text-primary mb-4">Маркет Анализ</h2>
-      <p class="mb-4 tm-intro-text">
-        В „Унимастер“ следим внимателно пазара на строителни услуги, за да предлагаме актуални и конкурентни решения. 
-        Анализираме тенденции, материали и технологии, за да осигурим най-доброто за нашите клиенти.
-      </p>
-    </div>
-  </div>
 
-  <div class="col-lg-1">
-    <i class="fa fa-3x fa-comment-alt text-center tm-icon"></i>
-  </div>
-  <div class="col-lg-5">
-    <div class="tm-intro-text-container">
-      <h2 class="tm-text-primary mb-4">Бърза Поддръжка</h2>
-      <p class="mb-4 tm-intro-text">
-        Нашият екип е винаги на разположение за въпроси, консултации и съдействие. 
-        Стремим се да отговаряме бързо и адекватно, защото знаем колко важна е комуникацията по време на строителния процес.
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- second row -->
-<div class="row tm-content-box"><!-- third row -->
-  <div class="col-lg-1">
-    <i class="fa fa-3x fa-fingerprint text-center tm-icon"></i>
-  </div>
-  <div class="col-lg-5">
-    <div class="tm-intro-text-container">
-      <h2 class="tm-text-primary mb-4">Сигурност и Контрол</h2>
-      <p class="mb-4 tm-intro-text">
-        Високо ниво на безопасност и контрол във всеки етап на изпълнение. 
-        Спазваме стриктно всички норми и изисквания, за да гарантираме сигурността на обектите и спокойствието на нашите клиенти.
-      </p>
-      <div class="tm-continue">
-        <a href="#testimonials" class="tm-intro-text tm-btn-primary">Научи повече</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-lg-1">
-    <i class="fa fa-3x fa-users text-center tm-icon"></i>
-  </div>
-  <div class="col-lg-5">
-    <div class="tm-intro-text-container">
-      <h2 class="tm-text-primary mb-4">Социална Отговорност</h2>
-      <p class="mb-4 tm-intro-text">
-        Вярваме в устойчивото строителство и социалната отговорност. 
-        Участваме в проекти с обществена значимост и подкрепяме инициативи, които допринасят за по-добра и безопасна среда на живот.
-      </p>
-      <div class="tm-continue">
-        <a href="#testimonials" class="tm-intro-text tm-btn-primary">Детайли</a>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- third row -->
-
-
-        
-    
-<section id="gallery" class="tm-section-pad-top">
-  <div class="container tm-container-gallery">
-    <div class="row">
-      <div class="text-center col-12">
-          <h2 class="tm-text-primary tm-section-title mb-4">Галерия</h2>
-          <p class="mx-auto tm-section-desc">
-            Разгледайте част от нашите завършени и текущи строителни проекти. 
-            Влагаме прецизност, професионализъм и внимание към всеки детайл – от основите до последния щрих.
-          </p>
-          </div>            
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="mx-auto tm-gallery-container">
-                    <div class="grid tm-gallery">
-                      <a href="img/blok-tuhla-dqsno (2).jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/blok-tuhla-dqsno (2).jpg" alt="Image 1" class="img-fluid">
-                          <figcaption>
-                            <h2><i>Physical Health <span>Exercise!</span></i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
-                      <a href="img/tehnika.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/tehnika.jpg" alt="Image 2" class="img-fluid">
-                          <figcaption>
-                            <h2><i>Rain on Glass <span>Second Image</span></i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
-                      <a href="img/tehnika-2.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/tehnika-2.jpg" alt="Image 3" class="img-fluid">
-                          <figcaption>
-                            <h2><i><span>Sea View</span> Mega City</i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
-                      <a href="img/podova.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/podova.jpg" alt="Image 4" class="img-fluid">
-                          <figcaption>
-                            <h2><i>Dream Girl <span>Thoughts</span></i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
-                      <a href="img/vodostrui.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/vodostrui.jpg" alt="Image 5" class="img-fluid">
-                          <figcaption>
-                            <h2><i><span>Workstation</span> Offices</i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
-                      <a href="img/kran-pulna.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/514688815_718426247601883_915058039601564868_n.jpg" alt="Image 6" class="img-fluid">
-                          <figcaption>
-                            <h2><i>Just Above <span>The City</span></i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
-                      <a href="img/putna.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/putna (1).jpg" alt="Image 7" class="img-fluid">
-                          <figcaption>
-                            <h2><i>Another <span>Exercise Time</span></i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
-                      <a href="img/kolegite.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/kolegite (1).jpg" alt="Image 8" class="img-fluid">
-                          <figcaption>
-                            <h2><i>Repeated <span>Image Spot</span></i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
+    <!-- Услуги -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Нашите услуги</h2>
+            <div class="row">
+                <!-- Мазилка -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon" style="background: #3498db;">
+                            <i class="fas fa-spray-can"></i>
+                        </div>
+                        <h4 style="color: #3498db;">Мазилка по стени и тавани</h4>
+                        <p class="text-muted">Машинна мазилка с турбозол за перфектна гладкост и качество</p>
+                        <ul class="text-start mt-3">
+                            <li>Поставяне на маяци</li>
+                            <li>Грундиране</li>
+                            <li>Машинно нанасяне с турбозол</li>
+                            <li>Изтегляне и заглаждане</li>
+                            <li>Готово за шпакловка/боя</li>
+                        </ul>
+                        <div class="price-badge">По запитване</div>
                     </div>
-                </div>                
-            </div>        
-          </div>
-      </div>
+                </div>
+
+                <!-- Замазки -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon" style="background: #e67e22;">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h4 style="color: #e67e22;">Замазки по подове</h4>
+                        <p class="text-muted">Професионално изпълнение със шлайфане с хеликоптер</p>
+                        <ul class="text-start mt-3">
+                            <li>Подготовка</li>
+                            <li>Поставяне на маяци/нивелация</li>
+                            <li>Смесване и транспорт</li>
+                            <li>Нивелация</li>
+                            <li>Шлайфане с хеликоптер</li>
+                        </ul>
+                        <div class="price-badge">По запитване</div>
+                    </div>
+                </div>
+
+                <!-- Стефан бетон -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon" style="background: #95a5a6;">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <h4 style="color: #95a5a6;">Шлайфан бетон</h4>
+                        <p class="text-muted">За гаражи и паркоместа - здрави основи</p>
+                        <ul class="text-start mt-3">
+                            <li>Подготовка на терена</li>
+                            <li>Армиране при необходимост</li>
+                            <li>Изливане на бетон</li>
+                            <li>Заглаждане и финиширане</li>
+                        </ul>
+                        <div class="price-badge">По запитване</div>
+                    </div>
+                </div>
+
+                <!-- Шпакловка -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon" style="background: #2ecc71;">
+                            <i class="fas fa-paint-roller"></i>
+                        </div>
+                        <h4 style="color: #2ecc71;">Шпакловка и боядисване</h4>
+                        <p class="text-muted">Финални довършителни работи на стени и тавани</p>
+                        <ul class="text-start mt-3">
+                            <li>Машинно нанасяне</li>
+                            <li>Първа ръка</li>
+                            <li>Изсъхване</li>
+                            <li>Втора ръка</li>
+                            <li>Финно шлайфане</li>
+                        </ul>
+                        <div class="price-badge">По запитване</div>
+                    </div>
+                </div>
+
+                <!-- Изолация -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon" style="background: #e74c3c;">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h4 style="color: #e74c3c;">Фасадна изолация</h4>
+                        <p class="text-muted">Полагане на изолация с декоративни елементи</p>
+                        <ul class="text-start mt-3">
+                            <li>Почистване на фасада</li>
+                            <li>Лепене на изолация</li>
+                            <li>Армиране</li>
+                            <li>Декоративни елементи</li>
+                        </ul>
+                        <div class="price-badge">По запитване</div>
+                    </div>
+                </div>
+
+                <!-- Грубо строителство -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon" style="background: #34495e;">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h4 style="color: #34495e;">Грубо строителство</h4>
+                        <p class="text-muted">Строителство до 8 етажа - от основи до покрив</p>
+                        <ul class="text-start mt-3">
+                            <li>Изкопни работи</li>
+                            <li>Основи и фундаменти</li>
+                            <li>Зидария и бетонни работи</li>
+                            <li>Покривни конструкции</li>
+                        </ul>
+                        <div class="price-badge">По запитване</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-<!-- Contact -->
-<section id="contact" class="tm-section-pad-top tm-parallax-2">
-
-  <div class="container tm-container-contact">
-    
-    <div class="row">
-        
-        <div class="text-center col-12">
-            <h2 class="tm-section-title mb-4">Свържете се с нас</h2>
-            <p class="mb-5">
-              Свържете се с нас за консултация, оферта или въпроси, свързани с вашия проект. 
-              Нашия екип е насреща, за да ви помогне с професионално отношение и индивидуален подход към всяка строителна задача.
-            </p><br>
+    <!-- Техника под наем -->
+    <section id="equipment" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Техника под наем</h2>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <div class="equipment-card">
+                        <h5><i class="fas fa-spray-can me-2"></i>Турбозолна машина</h5>
+                        <p class="mb-2">За мазилки - професионално нанасяне</p>
+                        <div class="d-flex justify-content-between">
+                            <span>Цена:</span>
+                            <strong>По запитване/ден</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <div class="equipment-card">
+                        <h5><i class="fas fa-tint me-2"></i>Помпа за мазилки</h5>
+                        <p class="mb-2">Ефективен транспорт на материали</p>
+                        <div class="d-flex justify-content-between">
+                            <span>Цена:</span>
+                            <strong>По запитване/ден</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <div class="equipment-card">
+                        <h5><i class="fas fa-air-freshener me-2"></i>Компресор</h5>
+                        <p class="mb-2">10 бара налягане - за всякакви нужди</p>
+                        <div class="d-flex justify-content-between">
+                            <span>Цена:</span>
+                            <strong>По запитване/ден</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <div class="equipment-card">
+                        <h5><i class="fas fa-helicopter me-2"></i>Хеликоптер за бетон</h5>
+                        <p class="mb-2">За заглаждане на бетонни повърхности</p>
+                        <div class="d-flex justify-content-between">
+                            <span>Цена:</span>
+                            <strong>По запитване/ден</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <div class="equipment-card">
+                        <h5><i class="fas fa-water me-2"></i>Вибратор/Водоструйка</h5>
+                        <p class="mb-2">За бетон - качество и издръжливост</p>
+                        <div class="d-flex justify-content-between">
+                            <span>Цена:</span>
+                            <strong>По запитване/ден</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <div class="equipment-card">
+                        <h5><i class="fas fa-tools me-2"></i>Жираф за шлайфане</h5>
+                        <p class="mb-2">За стени - достъпност на всяка височина</p>
+                        <div class="d-flex justify-content-between">
+                            <span>Цена:</span>
+                            <strong>По запитване/ден</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-12 col-md-12 mb-3">
+                    <div class="equipment-card">
+                        <h5><i class="fas fa-truck me-2"></i>Бобкат 3.5-3.8 тона</h5>
+                        <p class="mb-2">За товарно-разтоварни дейности и транспорт на строителни материали</p>
+                        <div class="d-flex justify-content-between">
+                            <span>Цена:</span>
+                            <strong>По запитване/ден</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-            
-<!-- Contact Form Section -->
-<div class="col-sm-12 col-md-6">
-  <form
-    action="https://formspree.io/f/xzzvaoak" 
-    method="POST"
-    onsubmit="return validateRecaptcha()"
-  >
-    <input id="name" name="name" type="text" placeholder="Вашето име" class="tm-input" required />
-    <input id="email" name="email" type="email" placeholder="Вашият имейл" class="tm-input" required />
-    <textarea id="message" name="message" rows="8" placeholder="Съобщение" class="tm-input" required></textarea>
-
-    <!-- reCAPTCHA -->
-    <div class="g-recaptcha mb-3" data-sitekey="6LcOgpkrAAAAAEvQz3xE3fAMWmUK1SatzefXqJpX"></div>
-
-    <button type="submit" class="btn tm-btn-submit">Изпрати</button>
-  </form>
-</div>
-
-<!-- Include reCAPTCHA script -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-<!-- JS за проверка на reCAPTCHA -->
-<script>
-  function validateRecaptcha() {
-    var response = grecaptcha.getResponse();
-    if (response.length === 0) {
-      alert("Моля, потвърдете, че не сте робот.");
-      return false;
-    }
-    return true;
-  }
-</script>
-            
-            <div class="col-sm-12 col-md-6">
-
-                <div class="contact-item">
-                  <a rel="nofollow" href="https://www.tooplate.com/contact" class="item-link">
-                      <i class="far fa-2x fa-comment mr-4"></i>
-                      <span class="mb-0">Chat Online</span>
-                  </a>              
+   <!-- Галерия -->
+<section id="gallery" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Галерия от наши проекти</h2>
+        
+        <!-- Филтри -->
+        <div class="text-center mb-4">
+            <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter active" data-filter="all">Всички</button>
+            <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter" data-filter="grub">Груб строеж</button>
+            <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter" data-filter="dovar">Довършителни</button>
+            <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter" data-filter="tech">Техника</button>
+            <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter" data-filter="ready">Готови</button>
+            <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter" data-filter="proj">Проекти</button>
+        </div>
+        
+        <!-- Снимки Grid -->
+        <div class="row g-2" id="gallery-items"> 
+            <!-- Груб строеж -->
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                <div class="photo-item">
+                    <img src="img/05becb29-06ef-4526-b1a8-05deeb86cbb1.jpg" alt="Строеж под скеле">
                 </div>
-                
-                <div class="contact-item">
-                  <a rel="nofollow" href="mailto:a10@abv.bg" class="item-link">
-                      <i class="far fa-2x fa-envelope mr-4"></i>
-                      <span class="mb-0">a10@abv.bg</span>
-                  </a>              
-                </div>
-                
-                <div class="contact-item">
-                  <a rel="nofollow" href="tel:0899172879" class="item-link">
-                      <i class="fas fa-2x fa-phone-square mr-4"></i>
-                      <span class="mb-0">+359 899 172 879</span>
-                  </a>              
-                </div>
-                
-                <div class="contact-item">&nbsp;</div>
-            
             </div>
             
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                <div class="photo-item">
+                    <img src="img/1233a765-bec0-4399-acf7-fdbd7913844e.jpg" alt="Строеж в планински терен">
+                </div>
+            </div>
             
-        </div><!-- row ending -->
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                <div class="photo-item">
+                    <img src="img/73fa3a55-8c8d-46a1-b311-222498685d22.jpg" alt="Строителна площадка с кран">
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                <div class="photo-item">
+                    <img src="img/d0d0d713-9ae1-4447-8b4b-1eb42dc21edc.jpg" alt="Жилищен комплекс в строеж">
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                <div class="photo-item">
+                    <img src="img/cdfdbaff-c6c5-4d3f-ba06-765039bc39e0.jpg" alt="Бетонна плоча с арматура">
+                </div>
+            </div>
+            
+            <!-- Довършителни работи -->
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo dovar">
+                <div class="photo-item">
+                    <img src="img/d5ff5d1e-d1ae-4dcc-9ec3-56d9a3853585.jpg" alt="Замазка по подове">
+                </div>
+            </div>
+            
+            <!-- Техника -->
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                <div class="photo-item">
+                    <img src="img/0a60310c-1d7b-42cb-988f-5f811f008a0a.jpg" alt="Бобкат">
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                <div class="photo-item">
+                    <img src="img/3de7c49f-a768-469f-8e8e-d63a5f6d7a1b.jpg" alt="Помпа за бетон">
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                <div class="photo-item">
+                    <img src="img/6b0bbb7b-858e-4864-adef-9180e734a044.jpg" alt="Строителна техника">
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                <div class="photo-item">
+                    <img src="img/5d597a4d-eee8-45d7-ac79-12cabd3847a0.jpg" alt="Бетоновоз Mercedes">
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                <div class="photo-item">
+                    <img src="img/673ad788-0209-4ead-8a89-10112d3d4100.jpg" alt="Машина за мазилка PFT">
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                <div class="photo-item">
+                    <img src="img/9124177b-b131-4724-9657-0eb3fc0563c9.jpg" alt="Бобкат Thomas">
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                <div class="photo-item">
+                    <img src="img/8495c786-d9dc-4d9f-afca-5fe46306a061.jpg" alt="Строителен кран">
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                <div class="photo-item">
+                    <img src="img/a3adaeb1-1af4-4114-b930-635d95481708.jpg" alt="Машина PFT">
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                <div class="photo-item">
+                    <img src="img/45442dfa-da3c-4b60-8f00-45b9ad1f0014.jpg" alt="Специална машина">
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                <div class="photo-item">
+                    <img src="img/ba329bfe-edba-4381-92d9-d0b48df2ffa5.jpg" alt="Багер Kubota">
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                <div class="photo-item">
+                    <img src="img/5cc78958-fd7f-4311-8652-4fcf5be62499.jpg" alt="Жираф за шпакловка">
+                </div>
+            </div>
+            
+            <!-- Готови обекти -->
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                <div class="photo-item">
+                    <img src="img/4f604b5a-109d-438e-9371-5f6494236123.jpg" alt="Завършена жилищна сграда">
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                <div class="photo-item">
+                    <img src="img/96e6e9a0-9872-4e91-8838-1129d0553c6b.jpg" alt="Модерна жилищна сграда">
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                <div class="photo-item">
+                    <img src="img/e62f516b-2ec1-4ddb-a648-7fcf17af256e.jpg" alt="Луксозен жилищен комплекс">
+                </div>
+            </div>
+            
+            <!-- Проекти -->
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo proj">
+                <div class="photo-item">
+                    <img src="img/3fbd4a22-e8b8-4a4f-b3f0-89d8ba068430.jpg" alt="3D визуализация">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Референции с отзиви -->
+<section id="references" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Отзиви от клиенти</h2>
         
-      </div>
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="testimonial-card">
+                    <div class="stars mb-2">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Отлична работа по мазилката! Професионални и бързи. Препоръчвам!"
+                    </p>
+                    <div class="testimonial-author">
+                        <strong>Иван Петров</strong>
+                        <small class="text-muted d-block">Строй ЕООД - Мазилка</small>
+                        <a href="tel:+359888123456" class="btn btn-sm btn-primary mt-2">
+                            <i class="fas fa-phone me-1"></i>+359 888 123 456
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="testimonial-card">
+                    <div class="stars mb-2">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Замазката е направена перфектно с хеликоптера. Много сме доволни!"
+                    </p>
+                    <div class="testimonial-author">
+                        <strong>Стоян Димитров</strong>
+                        <small class="text-muted d-block">БГ Строй АД - Замазки</small>
+                        <a href="tel:+359889111222" class="btn btn-sm btn-primary mt-2">
+                            <i class="fas fa-phone me-1"></i>+359 889 111 222
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="testimonial-card">
+                    <div class="stars mb-2">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Бобкатът ни помогна много за строежа. Надеждна техника и добра цена."
+                    </p>
+                    <div class="testimonial-author">
+                        <strong>Александър Йорданов</strong>
+                        <small class="text-muted d-block">Индустри ЕООД - Техника</small>
+                        <a href="tel:+359885555666" class="btn btn-sm btn-primary mt-2">
+                            <i class="fas fa-phone me-1"></i>+359 885 555 666
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="testimonial-card">
+                    <div class="stars mb-2">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Изолацията е направена качествено. Екипът е много професионален."
+                    </p>
+                    <div class="testimonial-author">
+                        <strong>Николай Василев</strong>
+                        <small class="text-muted d-block">Топлоизолации АД - Изолация</small>
+                        <a href="tel:+359883999000" class="btn btn-sm btn-primary mt-2">
+                            <i class="fas fa-phone me-1"></i>+359 883 999 000
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-      	<footer class="text-center small tm-footer">
-          <p class="mb-0">
-          Copyright &copy; 2025 UniMaster EOOD 
-          
-        </footer>
 
+
+
+    <!-- Форма за контакт -->
+    <section id="contact" class="py-5 bg-dark text-white">
+        <div class="container">
+            <h2 class="section-title text-white">Искам оферта</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <form class="contact-form">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Име и фамилия *</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Телефон *</label>
+                                <input type="tel" class="form-control" id="phone" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="service" class="form-label">Услуга</label>
+                                <select class="form-control" id="service">
+                                    <option value="">Изберете услуга</option>
+                                    <option value="мазилка">Мазилка по стени и тавани</option>
+                                    <option value="замазка">Замазки по подове</option>
+                                    <option value="бетон">Стефан бетон</option>
+                                    <option value="шпакловка">Шпакловка и боядисване</option>
+                                    <option value="изолация">Фасадна изолация</option>
+                                    <option value="строителство">Грубо строителство</option>
+                                    <option value="техника">Техника под наем</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="area" class="form-label">Квадратура (приблизително)</label>
+                                <input type="number" class="form-control" id="area" placeholder="кв.м.">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Съобщение</label>
+                            <textarea class="form-control" id="message" rows="4" placeholder="Опишете вашия проект..."></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i>Изпрати запитване
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
-    
-    <script src="js/jquery-1.9.1.min.js"></script>     
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5>УниМастер</h5>
+                    <p>Професионални строителни услуги в цяла България</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Контакти</h5>
+                    <p>
+                        <i class="fas fa-phone me-2"></i><a href="tel:+359899172879" class="text-white">+359 899 172 879</a><br>
+                        <i class="fas fa-envelope me-2"></i><a href="mailto:a10@abv.bg" class="text-white">a10@abv.bg</a>
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Социални мрежи</h5>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f fa-2x"></i></a>
+                        <a href="viber://chat?number=359899172879" class="text-white me-3"><i class="fab fa-viber fa-2x"></i></a>
+                        <a href="https://wa.me/359899172879" class="text-white"><i class="fab fa-whatsapp fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2025 УниМастер. Всички права запазени.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="slick/slick.min.js"></script>
     <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.singlePageNav.min.js"></script>
     <script src="js/easing.min.js"></script>
-    <script src="js/jquery.singlePageNav.min.js"></script>     
-    <script src="js/bootstrap.min.js"></script> 
+    <script src="js/unimaster-app.js"></script>
+
     <script>
-
-      function getOffSet(){
-        var _offset = 450;
-        var windowHeight = window.innerHeight;
-
-        if(windowHeight > 500) {
-          _offset = 400;
-        } 
-        if(windowHeight > 680) {
-          _offset = 300
-        }
-        if(windowHeight > 830) {
-          _offset = 210;
-        }
-
-        return _offset;
-      }
-
-      function setParallaxPosition($doc, multiplier, $object){
-        var offset = getOffSet();
-        var from_top = $doc.scrollTop(),
-          bg_css = 'center ' +(multiplier * from_top - offset) + 'px';
-        $object.css({"background-position" : bg_css });
-      }
-
-      // Parallax function
-      // Adapted based on https://codepen.io/roborich/pen/wpAsm        
-      var background_image_parallax = function($object, multiplier, forceSet){
-        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
-        multiplier = 1 - multiplier;
-        var $doc = $(document);
-        // $object.css({"background-attatchment" : "fixed"});
-
-        if(forceSet) {
-          setParallaxPosition($doc, multiplier, $object);
-        } else {
-          $(window).scroll(function(){          
-            setParallaxPosition($doc, multiplier, $object);
-          });
-        }
-      };
-
-      var background_image_parallax_2 = function($object, multiplier){
-        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
-        multiplier = 1 - multiplier;
-        var $doc = $(document);
-        $object.css({"background-attachment" : "fixed"});
-        
-        $(window).scroll(function(){
-          if($(window).width() > 768) {
-            var firstTop = $object.offset().top,
-                pos = $(window).scrollTop(),
-                yPos = Math.round((multiplier * (firstTop - pos)) - 186);              
-
-            var bg_css = 'center ' + yPos + 'px';
-
-            $object.css({"background-position" : bg_css });
-          } else {
-            $object.css({"background-position" : "center" });
-          }
+    // Навигация
+    $(document).ready(function() {
+        $('.navbar-nav').singlePageNav({
+            offset: 70
         });
-      };
-      
-      $(function(){
-        // Hero Section - Background Parallax
-        background_image_parallax($(".tm-parallax"), 0.30, false);
-        background_image_parallax_2($("#contact"), 0.80);   
-        background_image_parallax_2($("#testimonials"), 0.80);   
-        
-        // Handle window resize
-        window.addEventListener('resize', function(){
-          background_image_parallax($(".tm-parallax"), 0.30, true);
-        }, true);
+    });
 
-        // Detect window scroll and update navbar
-        $(window).scroll(function(e){          
-          if($(document).scrollTop() > 120) {
-            $('.tm-navbar').addClass("scroll");
-          } else {
-            $('.tm-navbar').removeClass("scroll");
-          }
-        });
+    // Показване на референции
+    function showReferences() {
+        var references = {
+            'мазилка': [
+                { name: 'Иван Петров', company: 'Строй ЕООД', phone: '+359 888 123 456' },
+                { name: 'Мария Георгиева', company: 'Частен клиент', phone: '+359 887 654 321' }
+            ],
+            'замазка': [
+                { name: 'Стоян Димитров', company: 'БГ Строй АД', phone: '+359 889 111 222' }
+            ],
+            'бетон': [
+                { name: 'Александър Йорданов', company: 'Индустри ЕООД', phone: '+359 885 555 666' }
+            ]
+        };
         
-        // Close mobile menu after click 
-        $('#tmNav a').on('click', function(){
-          $('.navbar-collapse').removeClass('show'); 
-        })
-
-        // Scroll to corresponding section with animation
-        $('#tmNav').singlePageNav({
-          'easing': 'easeInOutExpo',
-          'speed': 600
-        });        
+        var html = '<div class="modal fade" id="referencesModal" tabindex="-1">';
+        html += '<div class="modal-dialog modal-lg">';
+        html += '<div class="modal-content">';
+        html += '<div class="modal-header">';
+        html += '<h5 class="modal-title">Референции от клиенти</h5>';
+        html += '<button type="button" class="btn-close" data-bs-dismiss="modal"></button>';
+        html += '</div>';
+        html += '<div class="modal-body">';
         
-        // Add smooth scrolling to all links
-        // https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
-        $("a").on('click', function(event) {
-          if (this.hash !== "") {
-            event.preventDefault();
-            var hash = this.hash;
-
-            $('html, body').animate({
-              scrollTop: $(hash).offset().top
-            }, 600, 'easeInOutExpo', function(){
-              window.location.hash = hash;
+        for (var service in references) {
+            html += `<div class="mb-4">`;
+            html += `<h6 class="text-primary"><i class="fas fa-tools me-2"></i>${service.toUpperCase()}</h6>`;
+            
+            references[service].forEach(function(ref) {
+                html += '<div class="d-flex justify-content-between align-items-center border-bottom py-2">';
+                html += `<div><strong>${ref.name}</strong><br><small class="text-muted">${ref.company}</small></div>`;
+                html += `<a href="tel:${ref.phone}" class="btn btn-sm btn-outline-primary">${ref.phone}</a>`;
+                html += '</div>';
             });
-          } // End if
-        });
+            
+            html += '</div>';
+        }
+        
+        html += '</div>';
+        html += '<div class="modal-footer">';
+        html += '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Затвори</button>';
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+        
+        $('#referencesModal').remove();
+        $('body').append(html);
+        $('#referencesModal').modal('show');
+    }
 
-        // Pop up
-        $('.tm-gallery').magnificPopup({
-          delegate: 'a',
-          type: 'image',
-          gallery: { enabled: true }
-        });
-
-        $('.tm-testimonials-carousel').slick({
-          dots: true,
-          prevArrow: false,
-          nextArrow: false,
-          infinite: false,
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          responsive: [
-            {
-              breakpoint: 992,
-              settings: {
-                slidesToShow: 2
-              }
-            },
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 2
-              }
-            }, 
-            {
-              breakpoint: 480,
-              settings: {
-                  slidesToShow: 1
-              }                 
-            }
-          ]
-        });
-
-        // Gallery
-        $('.tm-gallery').slick({
-          dots: true,
-          infinite: false,
-          slidesToShow: 5,
-          slidesToScroll: 2,
-          responsive: [
-          {
-            breakpoint: 1199,
-            settings: {
-              slidesToShow: 4,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 991,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 767,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]
-        });
-      });
+    // Форма за контакт
+    $('.contact-form').on('submit', function(e) {
+        e.preventDefault();
+        
+        var name = $('#name').val();
+        var phone = $('#phone').val();
+        var service = $('#service').val();
+        var area = $('#area').val();
+        var message = $('#message').val();
+        
+        if (!name || !phone) {
+            alert('Моля попълнете задължителните полета!');
+            return;
+        }
+        
+        var whatsappMessage = `🏗️ НОВА ЗАЯВКА - УниМастер\n\n👤 Име: ${name}\n📞 Телефон: ${phone}`;
+        if (service) whatsappMessage += `\n🔧 Услуга: ${service}`;
+        if (area) whatsappMessage += `\n📏 Квадратура: ${area} кв.м.`;
+        if (message) whatsappMessage += `\n💬 Съобщение: ${message}`;
+        whatsappMessage += `\n\n⏰ Време: ${new Date().toLocaleString('bg-BG')}`;
+        
+        alert('Благодарим за запитването! Ще се свържем с Вас скоро.');
+        this.reset();
+        
+        if (confirm('Искате ли да изпратите запитването директно в WhatsApp?')) {
+            window.open('https://wa.me/359899172879?text=' + encodeURIComponent(whatsappMessage), '_blank');
+        }
+    });
     </script>
-  </body>
+
+<script>
+// Тест на филтрите
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Тестирам филтрите...');
+    
+    const filterBtns = document.querySelectorAll('.gallery-filter');
+    const photos = document.querySelectorAll('.gallery-photo');
+    
+    console.log('Филтър бутони:', filterBtns.length);
+    console.log('Снимки:', photos.length);
+    
+    if (filterBtns.length === 0) {
+        console.error('Няма намерени филтър бутони!');
+    }
+    
+    if (photos.length === 0) {
+        console.error('Няма намерени снимки!');
+    }
+    
+    // Добави click event на всеки бутон
+    filterBtns.forEach(function(btn) {
+        btn.onclick = function() {
+            console.log('Бутон натиснат:', this.getAttribute('data-filter'));
+            
+            const filter = this.getAttribute('data-filter');
+            
+            // Активен бутон
+            filterBtns.forEach(function(b) {
+                b.classList.remove('active');
+            });
+            this.classList.add('active');
+            
+            // Филтър
+            photos.forEach(function(photo) {
+                if (filter === 'all') {
+                    photo.classList.remove('hidden');
+                    photo.style.display = 'block';
+                } else {
+                    if (photo.classList.contains(filter)) {
+                        photo.classList.remove('hidden');
+                        photo.style.display = 'block';
+                    } else {
+                        photo.classList.add('hidden');
+                        photo.style.display = 'none';
+                    }
+                }
+            });
+        };
+    });
+});
+</script>
+
+<script>
+// Простичък lightbox който работи навсякъде
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('.photo-item img');
+    
+    images.forEach(function(img) {
+        img.style.cursor = 'pointer';
+        
+        img.addEventListener('click', function() {
+            // Създай lightbox
+            const lightbox = document.createElement('div');
+            lightbox.id = 'simple-lightbox';
+            lightbox.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    background: rgba(0,0,0,0.95);
+                    z-index: 99999;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                ">
+                    <div style="position: relative; max-width: 95%; max-height: 95%;">
+                        <img src="${this.src}" alt="${this.alt}" style="
+                            max-width: 100%;
+                            max-height: 100vh;
+                            object-fit: contain;
+                            border-radius: 8px;
+                        ">
+                        <div style="
+                            position: absolute;
+                            top: -20px;
+                            right: -20px;
+                            background: white;
+                            border-radius: 50%;
+                            width: 40px;
+                            height: 40px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+                            font-size: 24px;
+                            font-weight: bold;
+                            color: #333;
+                            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+                        " onclick="document.getElementById('simple-lightbox').remove()">
+                            ×
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Затвори при клик навсякъде
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox || e.target === lightbox.firstElementChild) {
+                    lightbox.remove();
+                }
+            });
+            
+            // Затвори с ESC
+            const escHandler = function(e) {
+                if (e.key === 'Escape') {
+                    lightbox.remove();
+                    document.removeEventListener('keydown', escHandler);
+                }
+            };
+            document.addEventListener('keydown', escHandler);
+            
+            document.body.appendChild(lightbox);
+        });
+    });
+});
+</script>
+
+<script>
+// Обновена навигация
+function initNavigation() {
+    // Smooth scroll
+    $('.navbar-nav a[href^="#"]').on('click', function(e) {
+        e.preventDefault();
+        var target = this.hash;
+        var $target = $(target);
+        
+        if ($target.length) {
+            // Затвори mobile menu
+            $('.navbar-collapse').collapse('hide');
+            
+            $('html, body').animate({
+                'scrollTop': $target.offset().top - 80
+            }, 800, 'swing');
+        }
+    });
+    
+    // Активен линк и navbar промяна при скрол
+    $(window).scroll(function() {
+        var scrollDistance = $(window).scrollTop() + 100;
+        
+        // Активен линк
+        $('section').each(function() {
+            if ($(this).position().top <= scrollDistance) {
+                $('.navbar-nav a.active').removeClass('active');
+                $('.navbar-nav a[href="#' + $(this).attr('id') + '"]').addClass('active');
+            }
+        });
+        
+        // Navbar стил при скрол
+        if ($(this).scrollTop() > 50) {
+            $('.modern-navbar').addClass('scrolled');
+        } else {
+            $('.modern-navbar').removeClass('scrolled');
+        }
+    });
+}
+
+</script>
+
+
+
+</body>
 </html>
