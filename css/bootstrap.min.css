@@ -611,7 +611,7 @@ footer a:hover {
 .contact-number {
     background: linear-gradient(135deg, #2c3e50, #34495e);
     border-radius: 25px;
-    padding: 8px 16px;
+    padding: 3px 10px;
     box-shadow: 0 3px 12px rgba(44, 62, 80, 0.2);
 }
 
