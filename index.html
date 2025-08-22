@@ -190,7 +190,7 @@
         </a>
     </div>
 
-<!-- Модерен Navbar -->
+<!-- Модерен Navbar - Fixed Mobile -->
 <nav class="navbar navbar-expand-lg fixed-top modern-navbar">
     <div class="container">
         <!-- Лого и име -->
@@ -202,8 +202,9 @@
             </div>
         </a>
         
-        <!-- Mobile toggle -->
-        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <!-- Mobile toggle - работещ вариант -->
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="mobile-menu-btn">
             <span class="toggler-line"></span>
             <span class="toggler-line"></span>
             <span class="toggler-line"></span>
@@ -213,37 +214,37 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#home">
+                    <a class="nav-link active mobile-nav-link" href="#home">
                         <i class="fas fa-home nav-icon"></i>
                         <span>Начало</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#services">
+                    <a class="nav-link mobile-nav-link" href="#services">
                         <i class="fas fa-tools nav-icon"></i>
                         <span>Услуги</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#equipment">
+                    <a class="nav-link mobile-nav-link" href="#equipment">
                         <i class="fas fa-truck nav-icon"></i>
                         <span>Техника</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#gallery">
+                    <a class="nav-link mobile-nav-link" href="#gallery">
                         <i class="fas fa-images nav-icon"></i>
                         <span>Галерия</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#references">
+                    <a class="nav-link mobile-nav-link" href="#references">
                         <i class="fas fa-star nav-icon"></i>
                         <span>Референции</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">
+                    <a class="nav-link mobile-nav-link" href="#contact">
                         <i class="fas fa-envelope nav-icon"></i>
                         <span>Контакти</span>
                     </a>
@@ -258,11 +259,19 @@
                         <span class="phone-number">+359 899 172 879</span>
                     </a>
                 </div>
+                <div class="social-links">
+                    <a href="viber://chat?number=359899172879" class="social-btn viber-btn" title="Viber">
+                        <i class="fab fa-viber"></i>
+                    </a>
+                    <a href="https://wa.me/359899172879" class="social-btn whatsapp-btn" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
             </div>
-            
         </div>
     </div>
 </nav>
+
 
 
 <!-- Hero секция - компактна -->
@@ -1106,6 +1115,75 @@ function initNavigation() {
 
 </script>
 
+<script>
+// Мобилно меню - работещо решение
+$(document).ready(function() {
+    console.log('Инициализирам мобилното меню...');
+    
+    // Мобилен toggle бутон
+    $('#mobile-menu-btn').on('click', function(e) {
+        e.preventDefault();
+        console.log('Mobile menu button clicked');
+        
+        var target = $(this).attr('data-target');
+        var $target = $(target);
+        
+        if ($target.hasClass('show')) {
+            $target.removeClass('show');
+            $(this).removeClass('active');
+            console.log('Closing mobile menu');
+        } else {
+            $target.addClass('show');
+            $(this).addClass('active');
+            console.log('Opening mobile menu');
+        }
+    });
+    
+    // Затвори менюто при клик на линк
+    $('.mobile-nav-link').on('click', function() {
+        $('#navbarNav').removeClass('show');
+        $('#mobile-menu-btn').removeClass('active');
+        console.log('Closing menu after link click');
+    });
+    
+    // Затвори менюто при клик извън него
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.navbar').length) {
+            $('#navbarNav').removeClass('show');
+            $('#mobile-menu-btn').removeClass('active');
+        }
+    });
+});
+
+// Backup решение ако jQuery не работи
+document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('navbarNav');
+    const menuLinks = document.querySelectorAll('.mobile-nav-link');
+    
+    if (menuBtn && menu) {
+        menuBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+                menuBtn.classList.remove('active');
+            } else {
+                menu.classList.add('show');
+                menuBtn.classList.add('active');
+            }
+        });
+        
+        // Затвори при клик на линк
+        menuLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                menu.classList.remove('show');
+                menuBtn.classList.remove('active');
+            });
+        });
+    }
+});
+</script>
 
 
 </body>

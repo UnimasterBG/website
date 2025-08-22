@@ -770,3 +770,119 @@ footer a:hover {
         font-size: 0.9rem;
     }
 }
+
+/* Mobile Menu Fixes */
+.custom-toggler {
+    border: none;
+    padding: 8px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: all 0.3s ease;
+}
+
+.custom-toggler.active .toggler-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.custom-toggler.active .toggler-line:nth-child(2) {
+    opacity: 0;
+}
+
+.custom-toggler.active .toggler-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.toggler-line {
+    width: 25px;
+    height: 3px;
+    background: #2c3e50;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+/* Mobile Dropdown Styles */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: white;
+        margin-top: 15px;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        border: 1px solid rgba(52, 152, 219, 0.1);
+        position: absolute;
+        top: 100%;
+        left: 15px;
+        right: 15px;
+        z-index: 1000;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+    
+    .navbar-collapse.show {
+        max-height: 500px;
+        opacity: 1;
+    }
+    
+    .navbar-nav {
+        margin-bottom: 20px;
+        gap: 8px;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 15px 16px !important;
+        justify-content: flex-start;
+        border-radius: 10px;
+        margin-bottom: 5px;
+    }
+    
+    .navbar-nav .nav-link:hover {
+        background: rgba(52, 152, 219, 0.1);
+        transform: translateX(5px);
+    }
+    
+    .navbar-contact {
+        align-items: stretch;
+        gap: 15px;
+        border-top: 1px solid #f1f1f1;
+        padding-top: 20px;
+    }
+    
+    .contact-number {
+        text-align: center;
+        border-radius: 12px;
+        padding: 12px 16px;
+    }
+    
+    .social-links {
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .social-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+    }
+}
+
+/* Фикс за малки екрани */
+@media (max-width: 576px) {
+    .navbar-collapse {
+        left: 10px;
+        right: 10px;
+        padding: 20px;
+    }
+    
+    .brand-name {
+        font-size: 1.2rem;
+    }
+    
+    .navbar-logo {
+        height: 36px;
+    }
+}
