@@ -1236,51 +1236,7 @@ function loadReferencesFromJSON() {
     });
 }
 
-// Зареди галерия от JSON
-function loadGalleryFromJSON() {
-    const container = document.getElementById('gallery-grid');
-    const gallery = window.unimasterData.gallery;
-    
-    gallery.forEach(item => {
-        const galleryItem = `
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo ${item.category}">
-                <div class="photo-item">
-                    <img src="img/${item.filename}" alt="${item.alt}">
-                </div>
-            </div>
-        `;
-        container.innerHTML += galleryItem;
-    });
-}
 
-// Останалите функции...
-function initSimpleGallery() {
-    const filterBtns = document.querySelectorAll('.gallery-filter');
-    const photos = document.querySelectorAll('.gallery-photo');
-    
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const filter = this.getAttribute('data-filter');
-            
-            filterBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            
-            photos.forEach(photo => {
-                if (filter === 'all') {
-                    photo.classList.remove('hidden');
-                } else {
-                    if (photo.classList.contains(filter)) {
-                        photo.classList.remove('hidden');
-                    } else {
-                        photo.classList.add('hidden');
-                    }
-                }
-            });
-        });
-    });
-}
 
 function initPhotoLightbox() {
     if (typeof $.fn.magnificPopup !== 'undefined') {
@@ -1294,22 +1250,7 @@ function initPhotoLightbox() {
     }
 }
 
-// Функции за лесно добавяне
-window.addNewReference = function(refData) {
-    window.unimasterData.references.push(refData);
-    document.getElementById('references-container').innerHTML = '';
-    loadReferencesFromJSON();
-    console.log('Нова референция добавена:', refData);
-};
 
-window.addNewGalleryItem = function(itemData) {
-    window.unimasterData.gallery.push(itemData);
-    document.getElementById('gallery-grid').innerHTML = '';
-    loadGalleryFromJSON();
-    initSimpleGallery();
-    initPhotoLightbox();
-    console.log('Нова снимка добавена:', itemData);
-};
 
 // Останалите функции (initNavigation, initContactForm, etc.)...
 </script>
