@@ -295,3 +295,14 @@ footer a:hover {
         height: 100px;
     }
 }
+
+.hero-logo-img {
+    max-width: 200px; /* По-голямо за hero */
+    height: auto;
+}
+
+.navbar-logo {
+    height: 50px; /* По-голямо от текущите 35px */
+    width: auto;
+}
+

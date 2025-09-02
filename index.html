@@ -121,7 +121,7 @@
     
     .hero-subtitle {
         font-size: 1.3rem;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         opacity: 0.9;
     }
     
@@ -195,10 +195,10 @@
     <div class="container">
         <!-- Лого и име -->
         <a class="navbar-brand brand-container" href="#home">
-            <img src="img/2eda68c1-7017-4948-8080-28b33368cd08.jpg" alt="УниМастер ЕООД" class="navbar-logo">
+            <img src="img/navbar-logo.png" alt="УниМастер ЕООД" class="navbar-logo">
             <div class="brand-info">
-                <span class="brand-name">УниМастер</span>
-                <small class="brand-subtitle">ЕООД</small>
+                <span class="brand-name">Unimaster</span>
+                <small class="brand-subtitle"></small>
             </div>
         </a>
         
@@ -272,8 +272,8 @@
         <div class="row">
             <div class="col-lg-10 mx-auto text-center">
                 <!-- По-малко лого -->
-                <div class="hero-logo mb-3">
-                    <img src="img/main-loggo.png" alt="УниМастер ЕООД" class="hero-logo-img-compact">
+                <div class="hero-logo mb-1">
+                    <img src="img/image.png" alt="УниМастер ЕООД" class="hero-logo-img">
                 </div>
                 
                 <p class="hero-subtitle-compact">Професионални строителни и довършителни услуги</p>
@@ -658,96 +658,12 @@
 <!-- Референции с отзиви -->
 <section id="references" class="py-5 bg-light">
     <div class="container">
-        <h2 class="section-title">Отзиви от клиенти</h2>
+        <h2 class="section-title">Референции от клиенти</h2>
+        <p class="text-center mb-5 text-muted">Свържете се директно с нашите доволни клиенти за препоръки</p>
         
-        <div class="row">
-            <div class="col-lg-6 mb-4">
-                <div class="testimonial-card">
-                    <div class="stars mb-2">
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        "Отлична работа по мазилката! Професионални и бързи. Препоръчвам!"
-                    </p>
-                    <div class="testimonial-author">
-                        <strong>Иван Петров</strong>
-                        <small class="text-muted d-block">Строй ЕООД - Мазилка</small>
-                        <a href="tel:+359888123456" class="btn btn-sm btn-primary mt-2">
-                            <i class="fas fa-phone me-1"></i>+359 888 123 456
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-6 mb-4">
-                <div class="testimonial-card">
-                    <div class="stars mb-2">
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        "Замазката е направена перфектно с хеликоптера. Много сме доволни!"
-                    </p>
-                    <div class="testimonial-author">
-                        <strong>Стоян Димитров</strong>
-                        <small class="text-muted d-block">БГ Строй АД - Замазки</small>
-                        <a href="tel:+359889111222" class="btn btn-sm btn-primary mt-2">
-                            <i class="fas fa-phone me-1"></i>+359 889 111 222
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-6 mb-4">
-                <div class="testimonial-card">
-                    <div class="stars mb-2">
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        "Бобкатът ни помогна много за строежа. Надеждна техника и добра цена."
-                    </p>
-                    <div class="testimonial-author">
-                        <strong>Александър Йорданов</strong>
-                        <small class="text-muted d-block">Индустри ЕООД - Техника</small>
-                        <a href="tel:+359885555666" class="btn btn-sm btn-primary mt-2">
-                            <i class="fas fa-phone me-1"></i>+359 885 555 666
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-6 mb-4">
-                <div class="testimonial-card">
-                    <div class="stars mb-2">
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        "Изолацията е направена качествено. Екипът е много професионален."
-                    </p>
-                    <div class="testimonial-author">
-                        <strong>Николай Василев</strong>
-                        <small class="text-muted d-block">Топлоизолации АД - Изолация</small>
-                        <a href="tel:+359883999000" class="btn btn-sm btn-primary mt-2">
-                            <i class="fas fa-phone me-1"></i>+359 883 999 000
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <!-- Референции ще се зареждат тук от JSON -->
+        <div class="row" id="references-container">
+            <!-- Зареждат се автоматично от JavaScript -->
         </div>
     </div>
 </section>
@@ -1175,6 +1091,131 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+</script>
+
+<script src="js/data-config.js"></script>
+<script>
+// УниМастер - Динамично зареждане от JSON
+
+$(document).ready(function() {
+    initNavigation();
+    initContactForm();
+    initPhotoLightbox();
+    loadReferencesFromJSON();
+    loadGalleryFromJSON();
+    initSimpleGallery();
+    initAnimations();
+});
+
+// Зареди референции от JSON
+function loadReferencesFromJSON() {
+    const container = document.getElementById('references-container');
+    const references = window.unimasterData.references;
+    
+    references.forEach(ref => {
+        const refCard = `
+            <div class="col-lg-6 mb-4">
+                <div class="testimonial-card">
+                    <div class="stars mb-2">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "${ref.testimonial}"
+                    </p>
+                    <div class="testimonial-author">
+                        <strong>${ref.name}</strong>
+                        <small class="text-muted d-block">${ref.company} - ${ref.service}</small>
+                        <a href="tel:${ref.phone}" class="btn btn-sm btn-primary mt-2">
+                            <i class="fas fa-phone me-1"></i>${ref.phone}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.innerHTML += refCard;
+    });
+}
+
+// Зареди галерия от JSON
+function loadGalleryFromJSON() {
+    const container = document.getElementById('gallery-grid');
+    const gallery = window.unimasterData.gallery;
+    
+    gallery.forEach(item => {
+        const galleryItem = `
+            <div class="col-6 col-md-4 col-lg-3 gallery-photo ${item.category}">
+                <div class="photo-item">
+                    <img src="img/${item.filename}" alt="${item.alt}">
+                </div>
+            </div>
+        `;
+        container.innerHTML += galleryItem;
+    });
+}
+
+// Останалите функции...
+function initSimpleGallery() {
+    const filterBtns = document.querySelectorAll('.gallery-filter');
+    const photos = document.querySelectorAll('.gallery-photo');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const filter = this.getAttribute('data-filter');
+            
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            photos.forEach(photo => {
+                if (filter === 'all') {
+                    photo.classList.remove('hidden');
+                } else {
+                    if (photo.classList.contains(filter)) {
+                        photo.classList.remove('hidden');
+                    } else {
+                        photo.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    });
+}
+
+function initPhotoLightbox() {
+    if (typeof $.fn.magnificPopup !== 'undefined') {
+        $('.photo-item img').magnificPopup({
+            type: 'image',
+            gallery: {
+                enabled: true,
+                navigateByImgClick: true
+            }
+        });
+    }
+}
+
+// Функции за лесно добавяне
+window.addNewReference = function(refData) {
+    window.unimasterData.references.push(refData);
+    document.getElementById('references-container').innerHTML = '';
+    loadReferencesFromJSON();
+    console.log('Нова референция добавена:', refData);
+};
+
+window.addNewGalleryItem = function(itemData) {
+    window.unimasterData.gallery.push(itemData);
+    document.getElementById('gallery-grid').innerHTML = '';
+    loadGalleryFromJSON();
+    initSimpleGallery();
+    initPhotoLightbox();
+    console.log('Нова снимка добавена:', itemData);
+};
+
+// Останалите функции (initNavigation, initContactForm, etc.)...
 </script>
 
 

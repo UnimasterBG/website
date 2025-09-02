@@ -458,6 +458,21 @@ footer a:hover {
     margin-bottom: 30px;
 }
 
+/* Copy-paste тези стилове в Console → Styles за тест */
+.hero-section {
+    padding: 40px 0 40px 0 !important;
+}
+
+.hero-logo {
+    margin-bottom: 8px !important;
+}
+
+.hero-subtitle {
+    margin-top: 8px !important;
+    margin-bottom: 12px !important;
+}
+
+
 .service-tag {
     display: inline-block;
     background: rgba(255,255,255,0.15);
@@ -886,3 +901,15 @@ footer a:hover {
         height: 36px;
     }
 }
+
+.hero-logo-img {
+    max-width: 400px; /* По-голямо за hero */
+    height: auto;
+}
+
+.navbar-logo {
+    height: 60px; /* По-голямо от текущите 35px */
+    width: auto;
+}
+
+
