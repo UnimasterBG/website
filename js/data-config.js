@@ -62,6 +62,199 @@ const referencesData = [
 // ГАЛЕРИЯ СНИМКИ
 const galleryData = [
     // Груб строеж
+// === НОВИ СНИМКИ ===
+// Добави тези обекти в масива galleryData:
+
+    // Снимка 1
+    { 
+        src: "img/new-1.jpg", 
+        title: "new-1", 
+        category: "ready", 
+        alt: "new-1"
+    },
+    // Снимка 2
+    { 
+        src: "new-26.jpg", 
+        title: "new-26", 
+        category: "ready", 
+        alt: "new-26"
+    },
+    // Снимка 3
+    { 
+        filename: "new-28.jpg", 
+        title: "new-28", 
+        category: "ready", 
+        alt: "new-28"
+    },
+    // Снимка 4
+    { 
+        filename: "new-25.jpg", 
+        title: "new-25", 
+        category: "tech", 
+        alt: "new-25"
+    },
+    // Снимка 5
+    { 
+        filename: "new-24.jpg", 
+        title: "new-24", 
+        category: "tech", 
+        alt: "new-24"
+    },
+    // Снимка 6
+    { 
+        filename: "new-23.jpg", 
+        title: "new-23", 
+        category: "tech", 
+        alt: "new-23"
+    },
+    // Снимка 7
+    { 
+        filename: "new-22.jpg", 
+        title: "new-22", 
+        category: "tech", 
+        alt: "new-22"
+    },
+    // Снимка 8
+    { 
+        filename: "new-21.jpg", 
+        title: "new-21", 
+        category: "tech", 
+        alt: "new-21"
+    },
+    // Снимка 9
+    { 
+        filename: "new-20.jpg", 
+        title: "new-20", 
+        category: "tech", 
+        alt: "new-20"
+    },
+    // Снимка 10
+    { 
+        filename: "new-19.jpg", 
+        title: "new-19", 
+        category: "tech", 
+        alt: "new-19"
+    },
+    // Снимка 11
+    { 
+        filename: "new-18.jpg", 
+        title: "new-18", 
+        category: "tech", 
+        alt: "new-18"
+    },
+    // Снимка 12
+    { 
+        filename: "new-17.jpg", 
+        title: "new-17", 
+        category: "grub", 
+        alt: "new-17"
+    },
+    // Снимка 13
+    { 
+        filename: "new-16.jpg", 
+        title: "new-16", 
+        category: "grub", 
+        alt: "new-16"
+    },
+    // Снимка 14
+    { 
+        filename: "new-15.jpg", 
+        title: "new-15", 
+        category: "ready", 
+        alt: "new-15"
+    },
+    // Снимка 15
+    { 
+        filename: "new-14.jpg", 
+        title: "new-14", 
+        category: "ready", 
+        alt: "new-14"
+    },
+    // Снимка 16
+    { 
+        filename: "new-13.jpg", 
+        title: "new-13", 
+        category: "grub", 
+        alt: "new-13"
+    },
+    // Снимка 17
+    { 
+        filename: "new-12.jpg", 
+        title: "new-12", 
+        category: "grub", 
+        alt: "new-12"
+    },
+    // Снимка 18
+    { 
+        filename: "new-11.jpg", 
+        title: "new-11", 
+        category: "tech", 
+        alt: "new-11"
+    },
+    // Снимка 19
+    { 
+        filename: "new-10.jpg", 
+        title: "new-10", 
+        category: "tech", 
+        alt: "new-10"
+    },
+    // Снимка 20
+    { 
+        filename: "new-9.jpg", 
+        title: "new-9", 
+        category: "tech", 
+        alt: "new-9"
+    },
+    // Снимка 21
+    { 
+        filename: "new-8.jpg", 
+        title: "new-8", 
+        category: "ready", 
+        alt: "new-8"
+    },
+    // Снимка 22
+    { 
+        filename: "new-7.jpg", 
+        title: "new-7", 
+        category: "ready", 
+        alt: "new-7"
+    },
+    // Снимка 23
+    { 
+        filename: "new-6.jpg", 
+        title: "new-6", 
+        category: "ready", 
+        alt: "new-6"
+    },
+    // Снимка 24
+    { 
+        filename: "new-5.jpg", 
+        title: "new-5", 
+        category: "grub", 
+        alt: "new-5"
+    },
+    // Снимка 25
+    { 
+        filename: "new-4.jpg", 
+        title: "new-4", 
+        category: "tech", 
+        alt: "new-4"
+    },
+    // Снимка 26
+    { 
+        filename: "new-3.jpg", 
+        title: "new-3", 
+        category: "tech", 
+        alt: "new-3"
+    },
+    // Снимка 27
+    { 
+        filename: "new-2.jpg", 
+        title: "new-2", 
+        category: "tech", 
+        alt: "new-2"
+    },
+
     { 
         filename: "05becb29-06ef-4526-b1a8-05deeb86cbb1.jpg", 
         title: "Строеж под скеле", 
@@ -197,6 +390,8 @@ const galleryData = [
         alt: "3D визуализация жилищен комплекс"
     }
 ];
+
+
 
 
 // ЕКСПОРТ НА ДАННИТЕ
