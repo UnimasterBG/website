@@ -7,7 +7,6 @@ const referencesData = [
         phone: "+359882021440",
         company: "Частен клиент",
         service: "Строителни работи",
-        testimonial: "Отлична работа и професионален подход. Препоръчвам!",
         category: "grub-stroej"
     },
     {
@@ -15,7 +14,6 @@ const referencesData = [
         phone: "+359878831977", 
         company: "Къща в Филиповци",
         service: "Строителство",
-        testimonial: "Качествено изпълнение и точност при сроковете.",
         category: "grub-stroej"
     },
     {
@@ -23,7 +21,6 @@ const referencesData = [
         phone: "+359878284629",
         company: "Частен клиент", 
         service: "Строителни услуги",
-        testimonial: "Много съм доволен от работата. Професионалисти!",
         category: "dovarshitelni"
     },
     {
@@ -31,7 +28,6 @@ const referencesData = [
         phone: "+359896834326",
         company: "Марка Röfix",
         service: "Мазилка и изолация", 
-        testimonial: "Отлична работа с мазилката. Бързо и качествено.",
         category: "dovarshitelni"
     },
     {
@@ -39,7 +35,6 @@ const referencesData = [
         phone: "+359896655135",
         company: "Строителна фирма 'Вечил 1' ООД",
         service: "Строителство",
-        testimonial: "Надеждни партньори за всички видове строителни работи.",
         category: "grub-stroej"
     },
     {
@@ -47,7 +42,6 @@ const referencesData = [
         phone: "+359887808876", 
         company: "Изолации Вебер",
         service: "Топлоизолация",
-        testimonial: "Перфектна изолация. Много професионален екип.",
         category: "gotovi"
     },
 
@@ -59,7 +53,6 @@ const referencesData = [
         phone: "+359878284629",
         company: "Крипс",
         service: "Измазване",
-        testimonial: "Отлична работа",
         category: "dovarshitelni"
     },
 
