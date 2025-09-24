@@ -2,7 +2,7 @@
 <html lang="bg">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <link rel="shortcut icon" type="x-icon" href="img/loggo.png">
     <title>УниМастер - Строителни и довършителни услуги</title>
     <meta name="description" content="Професионални строителни услуги - мазилка с турбозол, замазки с хеликоптер, фасадна изолация, техника под наем в цяла България">
@@ -268,7 +268,7 @@
 
 
 <!-- МИНИМАЛНА HERO СЕКЦИЯ -->
-<section class="hero-section-new">
+<section class="hero-section-new" id="home">
     <div class="container">
         <!-- Header Row -->
         <div class="row hero-header">
@@ -550,11 +550,6 @@
          
         <div class="row g-2" id="gallery-items"> 
             <!-- Груб строеж -->
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
-                <div class="photo-item">
-                    <img src="img/05becb29-06ef-4526-b1a8-05deeb86cbb1.jpg" alt="Строеж под скеле">
-                </div>
-            </div>
             
 <!-- ПОПРАВЕНА ГАЛЕРИЯ -->
 
@@ -860,7 +855,7 @@
    
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
+    <footer class="bg-dark text-white py-4" id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
@@ -958,34 +953,6 @@
         $('#referencesModal').modal('show');
     }
 
-    // Форма за контакт
-    $('.contact-form').on('submit', function(e) {
-        e.preventDefault();
-        
-        var name = $('#name').val();
-        var phone = $('#phone').val();
-        var service = $('#service').val();
-        var area = $('#area').val();
-        var message = $('#message').val();
-        
-        if (!name || !phone) {
-            alert('Моля попълнете задължителните полета!');
-            return;
-        }
-        
-        var whatsappMessage = `🏗️ НОВА ЗАЯВКА - УниМастер\n\n👤 Име: ${name}\n📞 Телефон: ${phone}`;
-        if (service) whatsappMessage += `\n🔧 Услуга: ${service}`;
-        if (area) whatsappMessage += `\n📏 Квадратура: ${area} кв.м.`;
-        if (message) whatsappMessage += `\n💬 Съобщение: ${message}`;
-        whatsappMessage += `\n\n⏰ Време: ${new Date().toLocaleString('bg-BG')}`;
-        
-        alert('Благодарим за запитването! Ще се свържем с Вас скоро.');
-        this.reset();
-        
-        if (confirm('Искате ли да изпратите запитването директно в WhatsApp?')) {
-            window.open('https://wa.me/359899172879?text=' + encodeURIComponent(whatsappMessage), '_blank');
-        }
-    });
     </script>
 
 <script>

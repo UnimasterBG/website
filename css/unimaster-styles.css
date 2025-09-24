@@ -495,15 +495,15 @@ footer a:hover {
     .navbar-collapse {
         background: white;
         margin-top: 15px;
-        border-radius: 15px;
+        border-radius: 0 0 10px 10px;
         padding: 25px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
         border: 1px solid rgba(52, 152, 219, 0.1);
         position: absolute;
         top: 100%;
-        left: 15px;
-        right: 15px;
-        z-index: 1000;
+        left: 0;
+        right: 0;
+        z-index: 1030;
         max-height: 0;
         overflow: hidden;
         opacity: 0;
@@ -518,6 +518,8 @@ footer a:hover {
     .navbar-nav {
         margin-bottom: 20px;
         gap: 8px;
+        z-index: 1020;
+        position: relative;
     }
 
     .navbar-nav .nav-link {
@@ -1053,6 +1055,7 @@ footer a:hover {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    z-index: 1020;
 }
 
 .nav-icon {
@@ -1555,15 +1558,17 @@ footer a:hover {
 
 /* Background Elements */
 .hero-bg-elements {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     pointer-events: none;
     overflow: hidden;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0; /* <- ТОВА e важно! Балончетата да са layer zero */
 }
 
+.hero-content, .hero-title-new, .hero-description, .hero-cta { 
+    position: relative;
+    z-index: 1; /* <- Всички основни текстове да са над балончетата */
+}
 .bg-shape {
     position: absolute;
     border-radius: 50%;
@@ -1592,4 +1597,7 @@ footer a:hover {
     right: 20%;
 }
 
-
+@media (max-width: 600px) {
+    .hero-title-new { font-size: 2rem; }
+    .hero-description { font-size: 1rem; }
+}

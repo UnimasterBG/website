@@ -506,54 +506,6 @@ $(document).ready(function() {
     initReferences();
 });
 
-// Backup инициализация ако jQuery не работи
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOMContentLoaded event - backup инициализация');
-    
-    // Повтори инициализацията след 1 секунда
-    setTimeout(function() {
-        if (document.querySelectorAll('.gallery-filter').length > 0) {
-            initSimpleGallery();
-            console.log('Backup инициализация на галерията');
-        }
-    }, 1000);
-});
 
-// Обновена навигация
-function initNavigation() {
-    // Smooth scroll
-    $('.navbar-nav a[href^="#"]').on('click', function(e) {
-        e.preventDefault();
-        var target = this.hash;
-        var $target = $(target);
-        
-        if ($target.length) {
-            // Затвори mobile menu
-            $('.navbar-collapse').collapse('hide');
-            
-            $('html, body').animate({
-                'scrollTop': $target.offset().top - 80
-            }, 800, 'swing');
-        }
-    });
-    
-    // Активен линк и navbar промяна при скрол
-    $(window).scroll(function() {
-        var scrollDistance = $(window).scrollTop() + 100;
-        
-        // Активен линк
-        $('section').each(function() {
-            if ($(this).position().top <= scrollDistance) {
-                $('.navbar-nav a.active').removeClass('active');
-                $('.navbar-nav a[href="#' + $(this).attr('id') + '"]').addClass('active');
-            }
-        });
-        
-        // Navbar стил при скрол
-        if ($(this).scrollTop() > 50) {
-            $('.modern-navbar').addClass('scrolled');
-        } else {
-            $('.modern-navbar').removeClass('scrolled');
-        }
-    });
-}
+
+
