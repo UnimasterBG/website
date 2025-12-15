@@ -260,9 +260,26 @@
                 (snapshot) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     progressBar.style.width = progress + '%';
+                    progressBar.textContent = Math.round(progress) + '%';
+                    progressBar.parentElement.classList.remove('d-none');
                 },
                 (error) => {
-                    alert("Upload failed: " + error.message);
+                    console.error("Upload Error Full:", error);
+                    let niceMsg = "Upload Failed.";
+                    if (error.code === 'storage/unauthorized') {
+                        niceMsg = "Permission Denied: Firebase Storage rules prevented this upload. <br>Did you enable Storage in 'Test Mode'?";
+                    } else if (error.code === 'storage/canceled') {
+                        niceMsg = "Upload canceled.";
+                    } else {
+                        niceMsg = `Error: ${error.message} <br><small>Code: ${error.code}</small>`;
+                    }
+
+                    const errDiv = document.createElement('div');
+                    errDiv.className = 'alert alert-danger mt-3';
+                    errDiv.innerHTML = `<strong>Error!</strong> ${niceMsg} <br><em>Check Console (F12) for details.</em>`;
+                    document.getElementById('uploadForm').appendChild(errDiv);
+
+                    document.getElementById('uploadProgress').classList.add('d-none');
                 },
                 async () => {
                     // Upload complete
