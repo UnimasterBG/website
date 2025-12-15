@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - UniMaster</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="css/unimaster-styles.css?v=5">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            display: none;
+        }
+
+        .admin-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #e67e22;
+        }
+
+        .preview-img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        #loadingOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Login View -->
+    <div id="loginView" class="container">
+        <div class="login-container">
+            <h3 class="text-center mb-4" style="color: #2c3e50;">UniMaster Admin</h3>
+            <div id="loginError" class="alert alert-danger d-none"></div>
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email" id="email" class="form-control" required placeholder="admin@unimaster.bg">
+                </div>
+                <div class="mb-3">
+                    <label>Password</label>
+                    <input type="password" id="password" class="form-control" required placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary w-100"
+                    style="background:#e67e22; border:none;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard View -->
+    <div id="dashboardView" class="dashboard-container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 style="color: #2c3e50;">Admin Dashboard</h2>
+            <button id="logoutBtn" class="btn btn-outline-danger">Logout</button>
+        </div>
+
+        <div class="row">
+            <!-- Add Photo -->
+            <div class="col-md-6">
+                <div class="admin-card">
+                    <h4><i class="fas fa-image me-2" style="color:#e67e22;"></i>Add New Photo</h4>
+                    <form id="uploadForm">
+                        <div class="mb-3">
+                            <label>Description (Alt Text)</label>
+                            <input type="text" id="photoDesc" class="form-control" required
+                                placeholder="e.g., Luxury Apartment">
+                        </div>
+                        <div class="mb-3">
+                            <label>Category</label>
+                            <select id="photoCategory" class="form-select" required>
+                                <option value="grub">Rough Construction (Груб строеж)</option>
+                                <option value="dovar">Finishing Works (Довършителни)</option>
+                                <option value="tech">Machinery (Техника)</option>
+                                <option value="ready">Completed Objects (Готови)</option>
+                                <option value="proj">Projects (Проекти)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label>Select Image</label>
+                            <input type="file" id="photoFile" class="form-control" accept="image/*" required>
+                            <img id="imagePreview" class="preview-img">
+                        </div>
+                        <div class="progress mb-3 d-none" id="uploadProgress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100"
+                            style="background:#e67e22; border:none;">Upload Photo</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Add Reference -->
+            <div class="col-md-6">
+                <div class="admin-card">
+                    <h4><i class="fas fa-user-friends me-2" style="color:#e67e22;"></i>Add Client Reference</h4>
+                    <form id="referenceForm">
+                        <div class="mb-3">
+                            <label>Client Name</label>
+                            <input type="text" id="refName" class="form-control" required placeholder="Ivan Petrov">
+                        </div>
+                        <div class="mb-3">
+                            <label>Phone Number</label>
+                            <input type="text" id="refPhone" class="form-control" required
+                                placeholder="+359 888 123 456">
+                        </div>
+                        <div class="mb-3">
+                            <label>Company / Project</label>
+                            <input type="text" id="refCompany" class="form-control" required
+                                placeholder="Private Client / Office Building">
+                        </div>
+                        <div class="mb-3">
+                            <label>Service Provided</label>
+                            <input type="text" id="refService" class="form-control" required placeholder="Roof Repair">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" style="background:#e67e22; border:none;">Add
+                            Reference</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase Logic -->
+    <script type="module">
+        import { auth, db, storage } from './js/firebase-config.js';
+        import { signInWithEmailAndPassword, signOut, onAuthStateChanged }
+            from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+        import { ref, uploadBytesResumable, getDownloadURL }
+            from "https://www.gstatic.com/firebasejs/11.0.2/firebase-storage.js";
+        import { collection, addDoc, serverTimestamp }
+            from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+        const loginView = document.getElementById('loginView');
+        const dashboardView = document.getElementById('dashboardView');
+        const loginForm = document.getElementById('loginForm');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
+        // Toggle Loading
+        const showLoading = (show) => {
+            loadingOverlay.style.display = show ? 'flex' : 'none';
+        };
+
+        // Auth State Listener
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loginView.style.display = 'none';
+                dashboardView.style.display = 'block';
+            } else {
+                loginView.style.display = 'block';
+                dashboardView.style.display = 'none';
+            }
+        });
+
+        // Login Logic
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            showLoading(true);
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                // Auth listener will handle UI switch
+            } catch (error) {
+                const errDiv = document.getElementById('loginError');
+                errDiv.textContent = "Error: " + error.message;
+                errDiv.classList.remove('d-none');
+            } finally {
+                showLoading(false);
+            }
+        });
+
+        // Logout Logic
+        logoutBtn.addEventListener('click', () => {
+            signOut(auth);
+        });
+
+        // Image Preview
+        document.getElementById('photoFile').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = document.getElementById('imagePreview');
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Upload Photo Logic
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const file = document.getElementById('photoFile').files[0];
+            const category = document.getElementById('photoCategory').value;
+            const desc = document.getElementById('photoDesc').value;
+
+            if (!file) return;
+
+            // Simple validation
+            if (file.size > 5 * 1024 * 1024) { // 5MB limit
+                alert("File is too large (Max 5MB)");
+                return;
+            }
+
+            const progressBar = document.querySelector('#uploadProgress .progress-bar');
+            document.getElementById('uploadProgress').classList.remove('d-none');
+
+            // Create Storage Ref
+            const storageRef = ref(storage, 'gallery/' + Date.now() + '_' + file.name);
+            const uploadTask = uploadBytesResumable(storageRef, file);
+
+            uploadTask.on('state_changed',
+                (snapshot) => {
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    progressBar.style.width = progress + '%';
+                },
+                (error) => {
+                    alert("Upload failed: " + error.message);
+                },
+                async () => {
+                    // Upload complete
+                    const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+
+                    // Save to Firestore
+                    await addDoc(collection(db, "gallery_photos"), {
+                        url: downloadURL,
+                        category: category,
+                        description: desc,
+                        timestamp: serverTimestamp()
+                    });
+
+                    alert("Photo Uploaded Successfully!");
+                    document.getElementById('uploadForm').reset();
+                    document.getElementById('imagePreview').style.display = 'none';
+                    document.getElementById('uploadProgress').classList.add('d-none');
+                    progressBar.style.width = '0%';
+                }
+            );
+        });
+
+        // Add Reference Logic
+        document.getElementById('referenceForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            showLoading(true);
+
+            const refData = {
+                name: document.getElementById('refName').value,
+                phone: document.getElementById('refPhone').value,
+                company: document.getElementById('refCompany').value,
+                service: document.getElementById('refService').value,
+                timestamp: serverTimestamp()
+            };
+
+            try {
+                await addDoc(collection(db, "references"), {
+                    ...refData
+                });
+                alert("Reference Added Successfully!");
+                document.getElementById('referenceForm').reset();
+            } catch (error) {
+                alert("Error adding reference: " + error.message);
+            } finally {
+                showLoading(false);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
