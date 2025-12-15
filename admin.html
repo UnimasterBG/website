@@ -164,7 +164,145 @@
         </div>
     </div>
 
+
+    <!-- MIGRATION SECTION (Hidden by default, for recovery) -->
+    <div class="row mt-5 mb-5 settings-section">
+        <div class="col-12">
+            <div class="card shadow-sm border-warning">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Data Migration (One-Time Use)</h5>
+                </div>
+                <div class="card-body">
+                    <p>Use this to restore the "Old" hardcoded photos and client references into the database.</p>
+
+                    <div class="d-grid gap-2 d-md-block">
+                        <button id="migrateRefsBtn" class="btn btn-outline-dark me-2">
+                            <i class="fas fa-users me-2"></i>Migrate References
+                        </button>
+                        <button id="migratePhotosBtn" class="btn btn-outline-dark">
+                            <i class="fas fa-images me-2"></i>Migrate Legacy Photos
+                        </button>
+                    </div>
+
+                    <div id="migrationLog" class="mt-3 p-2 bg-light border rounded small"
+                        style="max-height: 200px; overflow-y: auto; display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { db, storage } from './js/firebase-config.js';
+        import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+        import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-storage.js";
+
+        // --- OLD DATA ---
+        const legacyReferences = [
+            { name: "Кристина Сунгарска", phone: "+359882021440", company: "Частен клиент", service: "Строителни работи", category: "grub-stroej" },
+            { name: "Илиян Марков", phone: "+359878831977", company: "Къща в Филиповци", service: "Строителство", category: "grub-stroej" },
+            { name: "Крипс Петко", phone: "+359878284629", company: "Частен клиент", service: "Строителни услуги", category: "dovarshitelni" },
+            { name: "Иван Иванов", phone: "+359896834326", company: "Марка Röfix", service: "Мазилка и изолация", category: "dovarshitelni" },
+            { name: "Стефан Личев", phone: "+359896655135", company: "Строителна фирма 'Вечил 1' ООД", service: "Строителство", category: "grub-stroej" },
+            { name: "Иво Изолации Вебер", phone: "+359887808876", company: "Изолации Вебер", service: "Топлоизолация", category: "gotovi" },
+            { name: "Петко", phone: "+359878284629", company: "Крипс", service: "Измазване", category: "dovarshitelni" }
+        ];
+
+        // List of files found in root (simulated based on file list)
+        const legacyPhotos = [
+            'bager.jpg', 'kushta.jpg', 'stroej.jpg', 'new-1.jpg', 'new-10.jpg', 'new-12.jpg',
+            'new-13.jpg', 'new-15.jpg', 'new-16.jpg', 'new-17.jpg', 'new-18.jpg', 'new-19.jpg',
+            'new-22.jpg', 'new-23.jpg', 'new-26.jpg', 'new-27.jpg', 'new-28.jpg', 'new-3.jpg',
+            'new-4.jpg', 'new-5.jpg', 'new-7.jpg', 'new-8.jpg', 'osnova.jpg', 'osnovi.jpg',
+            'podova.jpg', 'putna.jpg', 'rabotnici.jpg', 'sivo1.jpg', 'staq1.jpg', 'staq2.jpg',
+            'staq3.jpg', 'staq4.jpg', 'staq5.jpg', 'staq6.jpg', 'staq7.jpg', 'staq8.jpg',
+            'turbo.jpg', 'turbo1.jpg', 'turbo2.jpg', 'turbo3.jpg', 'turbo4.jpg'
+        ];
+
+        // --- DOM ELEMENTS ---
+        const logDiv = document.getElementById('migrationLog');
+
+        function log(msg, type = 'info') {
+            if (logDiv) {
+                logDiv.style.display = 'block';
+                const color = type === 'error' ? 'red' : (type === 'success' ? 'green' : 'black');
+                logDiv.innerHTML += `<div style="color: ${color};">${msg}</div>`;
+                logDiv.scrollTop = logDiv.scrollHeight;
+            } else {
+                console.log(msg);
+            }
+        }
+
+        // --- MIGRATE REFERENCES ---
+        const refBtn = document.getElementById('migrateRefsBtn');
+        if (refBtn) {
+            refBtn.addEventListener('click', async () => {
+                if (!confirm('This will add ' + legacyReferences.length + ' references to the database. Proceed?')) return;
+
+                let count = 0;
+                for (const refData of legacyReferences) {
+                    try {
+                        await addDoc(collection(db, "references"), {
+                            ...refData,
+                            createdAt: serverTimestamp()
+                        });
+                        log(`Migrated ref: ${refData.name}`, 'success');
+                        count++;
+                    } catch (e) {
+                        log(`Error migrating ${refData.name}: ${e.message}`, 'error');
+                    }
+                }
+                alert('References migration complete!');
+            });
+        }
+
+        // --- MIGRATE PHOTOS ---
+        const photoBtn = document.getElementById('migratePhotosBtn');
+        if (photoBtn) {
+            photoBtn.addEventListener('click', async () => {
+                if (!confirm('This will upload ' + legacyPhotos.length + ' photos to Storage. This may take a while. Proceed?')) return;
+
+                log('Starting photo migration...', 'info');
+
+                for (const filename of legacyPhotos) {
+                    try {
+                        // Look for image in 'img/' folder as per legacy code structure
+                        log(`Fetching img/${filename}...`);
+                        const response = await fetch(`img/${filename}`);
+                        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                        const blob = await response.blob();
+
+                        // Upload to Storage
+                        const storageRef = ref(storage, 'gallery/' + filename);
+                        log(`Uploading ${filename}...`);
+                        // Using simple uploadBytes for migration script simplicity
+                        const snapshot = await uploadBytes(storageRef, blob);
+                        const downloadURL = await getDownloadURL(snapshot.ref);
+
+                        // Determine Category
+                        let cat = 'Rough Construction (Груб строеж)'; // Default
+                        if (filename.includes('staq') || filename.includes('new')) cat = 'Finishing Works (Довършителни дейности)';
+                        if (filename.includes('gotova')) cat = 'Completed Objects (Готови обекти)';
+
+                        // Save to Firestore
+                        await addDoc(collection(db, "gallery_photos"), {
+                            url: downloadURL,
+                            category: cat,
+                            description: 'Migrated: ' + filename,
+                            timestamp: serverTimestamp()
+                        });
+
+                        log(`Success: ${filename}`, 'success');
+                    } catch (e) {
+                        log(`Failed ${filename}: ${e.message}`, 'error');
+                    }
+                }
+                alert('Photo migration complete!');
+            });
+        }
+    </script>
+
     <!-- Firebase Logic -->
+
     <script type="module">
         import { auth, db, storage } from './js/firebase-config.js';
         import { signInWithEmailAndPassword, signOut, onAuthStateChanged }
