@@ -277,8 +277,12 @@
                             <small class="text-muted">${data.description}</small>
                         </td>
                         <td class="text-end">
-                            <button class="btn btn-sm btn-outline-primary edit-photo-btn" data-id="${doc.id}"><i class="fas fa-edit"></i></button>
-                            <button class="btn btn-sm btn-outline-danger delete-photo-btn" data-id="${doc.id}" data-url="${data.url}"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-sm btn-outline-primary edit-photo-btn" data-id="${doc.id}">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger delete-photo-btn" data-id="${doc.id}" data-url="${data.url}">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
                         </td>
                     `;
                     list.appendChild(row);
@@ -320,8 +324,12 @@
                             <button class="btn btn-sm btn-outline-primary edit-ref-btn" 
                                 data-id="${docSnap.id}" 
                                 data-obj='${JSON.stringify(data).replace(/'/g, "&#39;")}'
-                            ><i class="fas fa-edit"></i></button>
-                            <button class="btn btn-sm btn-outline-danger delete-ref-btn" data-id="${docSnap.id}"><i class="fas fa-trash"></i></button>
+                            >
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger delete-ref-btn" data-id="${docSnap.id}">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
                         </div>
                     `;
                     list.appendChild(li);
