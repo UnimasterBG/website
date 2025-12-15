@@ -443,9 +443,9 @@ $(document).ready(function () {
     console.log('DOM готов. Стартирам критични функции...');
 
     // Зареждаме данните веднага
-    try {
-        loadReferencesFromJSON();
-    } catch (e) { console.error('References load failed:', e); }
+    // try {
+    //     loadReferencesFromJSON();
+    // } catch (e) { console.error('References load failed:', e); }
 
     try {
         initMobileMenu();
