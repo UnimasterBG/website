@@ -277,7 +277,10 @@
                             <small class="text-muted">${data.description}</small>
                         </td>
                         <td class="text-end">
-                            <button class="btn btn-sm btn-outline-primary edit-photo-btn" data-id="${doc.id}">
+                            <button class="btn btn-sm btn-outline-primary edit-photo-btn" 
+                                data-id="${doc.id}"
+                                data-obj='${JSON.stringify(data).replace(/'/g, "&#39;")}'
+                            >
                                 <i class="fas fa-edit"></i> Edit
                             </button>
                             <button class="btn btn-sm btn-outline-danger delete-photo-btn" data-id="${doc.id}" data-url="${data.url}">
@@ -293,7 +296,10 @@
                     b.addEventListener('click', () => deletePhoto(b.dataset.id, b.dataset.url));
                 });
                 document.querySelectorAll('.edit-photo-btn').forEach(b => {
-                    b.addEventListener('click', () => startEditPhoto(b.dataset.id)); // Implement Edit Metadata later if needed
+                    b.addEventListener('click', function () {
+                        const data = JSON.parse(this.dataset.obj);
+                        startEditPhoto(this.dataset.id, data);
+                    });
                 });
 
             } catch (e) {
@@ -447,45 +453,135 @@
             finally { showLoading(false); }
         });
 
-        // PHOTO UPLOAD (Add Only for now - Edit requires complex logic)
+        // START EDIT PHOTO
+        function startEditPhoto(id, data) {
+            editingPhotoId = id;
+            document.getElementById('photoDesc').value = data.description;
+            document.getElementById('photoCategory').value = data.category;
+
+            // Show current image preview
+            const img = document.getElementById('imagePreview');
+            img.src = data.url;
+            img.style.display = 'block';
+
+            // Make file input optional
+            document.getElementById('photoFile').removeAttribute('required');
+
+            const btn = document.querySelector('#uploadForm button[type="submit"]');
+            btn.innerHTML = 'Update Photo Info';
+            btn.classList.replace('btn-primary', 'btn-success');
+
+            // Add Cancel Button
+            if (!document.getElementById('cancelPhotoEdit')) {
+                const cancelBtn = document.createElement('button');
+                cancelBtn.id = 'cancelPhotoEdit';
+                cancelBtn.type = 'button';
+                cancelBtn.className = 'btn btn-secondary ms-2';
+                cancelBtn.innerHTML = 'Cancel';
+                cancelBtn.onclick = cancelEditPhoto;
+                btn.parentNode.appendChild(cancelBtn);
+            }
+
+            document.getElementById('uploadForm').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function cancelEditPhoto() {
+            editingPhotoId = null;
+            document.getElementById('uploadForm').reset();
+            document.getElementById('imagePreview').style.display = 'none';
+            document.getElementById('photoFile').setAttribute('required', ''); // Make file required again
+
+            const btn = document.querySelector('#uploadForm button[type="submit"]');
+            btn.innerHTML = 'Upload Photo';
+            btn.classList.replace('btn-success', 'btn-primary');
+
+            const cancel = document.getElementById('cancelPhotoEdit');
+            if (cancel) cancel.remove();
+        }
+
+        // PHOTO FORM HANDLER (ADD or UPDATE)
         document.getElementById('uploadForm').addEventListener('submit', async (e) => {
             e.preventDefault();
+
             const file = document.getElementById('photoFile').files[0];
             const category = document.getElementById('photoCategory').value;
             const desc = document.getElementById('photoDesc').value;
 
-            if (!file) return;
+            // If adding new photo, file is required. If editing, it is optional.
+            if (!editingPhotoId && !file) {
+                alert("Please select an image file.");
+                return;
+            }
 
-            const progressBar = document.querySelector('#uploadProgress .progress-bar');
-            document.getElementById('uploadProgress').classList.remove('d-none');
+            showLoading(true);
 
-            const storageRef = ref(storage, 'gallery/' + Date.now() + '_' + file.name);
-            const uploadTask = uploadBytesResumable(storageRef, file);
+            try {
+                let downloadURL = null;
 
-            uploadTask.on('state_changed',
-                (snapshot) => {
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    progressBar.style.width = progress + '%';
-                    progressBar.textContent = Math.round(progress) + '%';
-                },
-                (error) => { console.error(error); alert("Upload failed"); },
-                async () => {
-                    const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-                    await addDoc(collection(db, "gallery_photos"), {
-                        url: downloadURL,
-                        category: category,
-                        description: desc,
-                        timestamp: serverTimestamp()
+                // Upload new image if selected
+                if (file) {
+                    const progressBar = document.querySelector('#uploadProgress .progress-bar');
+                    document.getElementById('uploadProgress').classList.remove('d-none');
+
+                    const storageRef = ref(storage, 'gallery/' + Date.now() + '_' + file.name);
+                    const uploadTask = uploadBytesResumable(storageRef, file);
+
+                    // We need to wrap upload in a promise to await it inside this async function
+                    await new Promise((resolve, reject) => {
+                        uploadTask.on('state_changed',
+                            (snapshot) => {
+                                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                                progressBar.style.width = progress + '%';
+                                progressBar.textContent = Math.round(progress) + '%';
+                            },
+                            (error) => reject(error),
+                            async () => {
+                                downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+                                resolve();
+                            }
+                        );
                     });
+                }
 
-                    alert("Uploaded!");
+                // Prepare Data
+                const photoData = {
+                    category: category,
+                    description: desc,
+                    // If no new file, this field won't be updated (unless we fetch old url, but for update we leave it undefined keys are not updated)
+                    timestamp: serverTimestamp()
+                };
+
+                if (downloadURL) {
+                    photoData.url = downloadURL;
+
+                    // If editing and uploaded new file, we could optionally delete the old file, but safety first.
+                }
+
+
+                if (editingPhotoId) {
+                    await updateDoc(doc(db, "gallery_photos", editingPhotoId), photoData);
+                    alert("Photo Updated!");
+                    cancelEditPhoto();
+                } else {
+                    if (!downloadURL) throw new Error("Upload failed or no file selected.");
+                    await addDoc(collection(db, "gallery_photos"), photoData);
+                    alert("Photo Uploaded!");
                     document.getElementById('uploadForm').reset();
                     document.getElementById('imagePreview').style.display = 'none';
-                    document.getElementById('uploadProgress').classList.add('d-none');
-                    progressBar.style.width = '0%';
-                    loadPhotos(); // Refresh list
                 }
-            );
+
+                document.getElementById('uploadProgress').classList.add('d-none');
+                if (document.querySelector('#uploadProgress .progress-bar')) {
+                    document.querySelector('#uploadProgress .progress-bar').style.width = '0%';
+                }
+                loadPhotos();
+
+            } catch (error) {
+                console.error(error);
+                alert("Operation failed: " + error.message);
+            } finally {
+                showLoading(false);
+            }
         });
 
         // Initial Load Events
