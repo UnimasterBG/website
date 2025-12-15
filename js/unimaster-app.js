@@ -1,32 +1,23 @@
-// УниМастер - JavaScript функционалности
 
-$(document).ready(function() {
-    // Инициализация
-    initNavigation();
-    initContactForm();
-    initGallery();
-    initAnimations();
-    initReferences();
-});
 
 // Навигация
 function initNavigation() {
     // Smooth scroll навигация
-    $('.navbar-nav a[href^="#"]').on('click', function(e) {
+    $('.navbar-nav a[href^="#"]').on('click', function (e) {
         e.preventDefault();
-        
+
         var target = this.hash;
         var $target = $(target);
-        
+
         if ($target.length) {
             $('html, body').animate({
                 'scrollTop': $target.offset().top - 70
             }, 800, 'swing');
         }
     });
-    
+
     // Промяна на навигацията при скрол
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
             $('.navbar-custom').addClass('navbar-scrolled');
         } else {
@@ -37,9 +28,9 @@ function initNavigation() {
 
 // Форма за контакт
 function initContactForm() {
-    $('.contact-form').on('submit', function(e) {
+    $('.contact-form').on('submit', function (e) {
         e.preventDefault();
-        
+
         var formData = {
             name: $('#name').val(),
             phone: $('#phone').val(),
@@ -47,23 +38,23 @@ function initContactForm() {
             area: $('#area').val(),
             message: $('#message').val()
         };
-        
+
         // Валидация
         if (!formData.name || !formData.phone) {
             showNotification('Моля попълнете задължителните полета!', 'error');
             return;
         }
-        
+
         // Проверка за телефонен номер
         if (!isValidPhoneNumber(formData.phone)) {
             showNotification('Моля въведете валиден телефонен номер!', 'error');
             return;
         }
-        
+
         // Симулация на изпращане
         showNotification('Изпращам запитването...', 'info');
-        
-        setTimeout(function() {
+
+        setTimeout(function () {
             // Тук би се извикала реална функция за изпращане
             sendContactForm(formData);
         }, 1500);
@@ -74,15 +65,15 @@ function initContactForm() {
 function sendContactForm(data) {
     // В реална ситуация тук би се направила AJAX заявка
     console.log('Данни от формата:', data);
-    
+
     // Генериране на съобщение за WhatsApp/Viber
     var message = generateWhatsAppMessage(data);
-    
+
     showNotification('Благодарим за запитването! Ще се свържем с Вас скоро.', 'success');
-    
+
     // Изчистване на формата
     $('.contact-form')[0].reset();
-    
+
     // Опция за директно изпращане към WhatsApp
     if (confirm('Искате ли да изпратите запитването директно в WhatsApp?')) {
         window.open('https://wa.me/359899172879?text=' + encodeURIComponent(message), '_blank');
@@ -94,21 +85,21 @@ function generateWhatsAppMessage(data) {
     var message = `🏗️ НОВА ЗАЯВКА ЗА ОФЕРТА - УниМастер\n\n`;
     message += `👤 Име: ${data.name}\n`;
     message += `📞 Телефон: ${data.phone}\n`;
-    
+
     if (data.service) {
         message += `🔧 Услуга: ${data.service}\n`;
     }
-    
+
     if (data.area) {
         message += `📏 Квадратура: ${data.area} кв.м.\n`;
     }
-    
+
     if (data.message) {
         message += `💬 Съобщение: ${data.message}\n`;
     }
-    
+
     message += `\n⏰ Време на запитването: ${new Date().toLocaleString('bg-BG')}`;
-    
+
     return message;
 }
 
@@ -122,11 +113,11 @@ function isValidPhoneNumber(phone) {
 function showNotification(message, type = 'info') {
     // Премахване на стари нотификации
     $('.notification').remove();
-    
+
     var alertClass = 'alert-primary';
     var icon = 'fas fa-info-circle';
-    
-    switch(type) {
+
+    switch (type) {
         case 'success':
             alertClass = 'alert-success';
             icon = 'fas fa-check-circle';
@@ -140,178 +131,151 @@ function showNotification(message, type = 'info') {
             icon = 'fas fa-exclamation-triangle';
             break;
     }
-    
+
     var notification = `
         <div class="alert ${alertClass} notification fixed-top text-center" style="z-index: 9999; top: 80px;">
             <i class="${icon} me-2"></i>${message}
         </div>
     `;
-    
+
     $('body').prepend(notification);
-    
+
     // Автоматично скриване след 5 секунди
-    setTimeout(function() {
-        $('.notification').fadeOut(500, function() {
+    setTimeout(function () {
+        $('.notification').fadeOut(500, function () {
             $(this).remove();
         });
     }, 5000);
 }
 
-// Галерия
-function initGallery() {
-    // Magnific Popup за галерията
-    if ($('.gallery-item').length) {
-        $('.gallery-item').magnificPopup({
-            type: 'image',
-            gallery: {
-                enabled: true,
-                navigateByImgClick: true,
-                preload: [0,1]
-            },
-            image: {
-                titleSrc: function(item) {
-                    return item.el.attr('data-title') || 'УниМастер - Проект';
-                }
-            }
-        });
-    }
-}
+
 
 // Анимации
 function initAnimations() {
     // Fade in при скрол
-    $(window).scroll(function() {
-        $('.service-card, .equipment-card, .process-step').each(function() {
+    $(window).scroll(function () {
+        $('.service-card, .equipment-card, .process-step').each(function () {
             var elementTop = $(this).offset().top;
             var elementBottom = elementTop + $(this).outerHeight();
             var viewportTop = $(window).scrollTop();
             var viewportBottom = viewportTop + $(window).height();
-            
+
             if (elementBottom > viewportTop && elementTop < viewportBottom) {
                 $(this).addClass('fade-in-up');
             }
         });
     });
-    
+
     // Брояч анимация
-    $('.counter').each(function() {
+    $('.counter').each(function () {
         var $this = $(this);
         var countTo = $this.attr('data-count');
-        
+
         $({ countNum: $this.text() }).animate({
             countNum: countTo
         }, {
             duration: 2000,
             easing: 'linear',
-            step: function() {
+            step: function () {
                 $this.text(Math.floor(this.countNum));
             },
-            complete: function() {
+            complete: function () {
                 $this.text(this.countNum);
             }
         });
     });
 }
 
-// Референции
-function initReferences() {
-    window.showReferences = function() {
-        // Референции по категории услуги
-        var references = {
-            'мазилка': [
-                { name: 'Иван Петров', company: 'Строй ЕООД', phone: '+359 888 123 456' },
-                { name: 'Мария Георгиева', company: 'Частен клиент', phone: '+359 887 654 321' }
-            ],
-            'замазка': [
-                { name: 'Стоян Димитров', company: 'БГ Строй АД', phone: '+359 889 111 222' },
-                { name: 'Петя Николова', company: 'Частен клиент', phone: '+359 886 333 444' }
-            ],
-            'бетон': [
-                { name: 'Александър Йорданов', company: 'Индустри ЕООД', phone: '+359 885 555 666' }
-            ],
-            'шпакловка': [
-                { name: 'Красимира Стоянова', company: 'Частен клиент', phone: '+359 884 777 888' }
-            ],
-            'изолация': [
-                { name: 'Николай Василев', company: 'Топлоизолации АД', phone: '+359 883 999 000' }
-            ],
-            'строителство': [
-                { name: 'Георги Петров', company: 'Мега Строй ООД', phone: '+359 882 111 333' }
-            ]
-        };
-        
-        var html = '<div class="modal fade" id="referencesModal" tabindex="-1">';
-        html += '<div class="modal-dialog modal-lg">';
-        html += '<div class="modal-content">';
-        html += '<div class="modal-header">';
-        html += '<h5 class="modal-title">Референции от клиенти</h5>';
-        html += '<button type="button" class="btn-close" data-bs-dismiss="modal"></button>';
-        html += '</div>';
-        html += '<div class="modal-body">';
-        
-        for (var service in references) {
-            var serviceName = getServiceName(service);
-            var serviceColor = getServiceColor(service);
-            
-            html += `<div class="reference-card ${service}-ref mb-4">`;
-            html += `<h6 style="color: ${serviceColor}"><i class="fas fa-tools me-2"></i>${serviceName}</h6>`;
-            
-            references[service].forEach(function(ref) {
-                html += '<div class="d-flex justify-content-between align-items-center border-bottom py-2">';
-                html += `<div><strong>${ref.name}</strong><br><small class="text-muted">${ref.company}</small></div>`;
-                html += `<a href="tel:${ref.phone}" class="btn btn-sm btn-outline-primary">${ref.phone}</a>`;
-                html += '</div>';
-            });
-            
-            html += '</div>';
+// Зареждане на референции (Hardcoded data for reliability)
+function loadReferencesFromJSON() {
+    const container = $('#references-container');
+    if (!container.length) return;
+
+    // Данни за референциите
+    const references = [
+        {
+            name: "Кристина Сунгарска",
+            phone: "+359882021440",
+            company: "Частен клиент",
+            service: "Строителни работи",
+            category: "grub-stroej"
+        },
+        {
+            name: "Илиян Марков",
+            phone: "+359878831977",
+            company: "Къща в Филиповци",
+            service: "Строителство",
+            category: "grub-stroej"
+        },
+        {
+            name: "Крипс Петко",
+            phone: "+359878284629",
+            company: "Частен клиент",
+            service: "Строителни услуги",
+            category: "dovarshitelni"
+        },
+        {
+            name: "Иван Иванов",
+            phone: "+359896834326",
+            company: "Марка Röfix",
+            service: "Мазилка и изолация",
+            category: "dovarshitelni"
+        },
+        {
+            name: "Стефан Личев",
+            phone: "+359896655135",
+            company: "Строителна фирма 'Вечил 1' ООД",
+            service: "Строителство",
+            category: "grub-stroej"
+        },
+        {
+            name: "Иво Изолации Вебер",
+            phone: "+359887808876",
+            company: "Изолации Вебер",
+            service: "Топлоизолация",
+            category: "gotovi"
+        },
+        {
+            name: "Петко",
+            phone: "+359878284629",
+            company: "Крипс",
+            service: "Измазване",
+            category: "dovarshitelni"
         }
-        
-        html += '</div>';
-        html += '<div class="modal-footer">';
-        html += '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Затвори</button>';
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        
-        // Премахване на стар модал ако има такъв
-        $('#referencesModal').remove();
-        
-        // Добавяне и показване на новия модал
-        $('body').append(html);
-        $('#referencesModal').modal('show');
-    };
-}
+    ];
 
-// Помощни функции
-function getServiceName(serviceKey) {
-    var names = {
-        'мазилка': 'Мазилка по стени и тавани',
-        'замазка': 'Замазки по подове',
-        'бетон': 'Стефан бетон',
-        'шпакловка': 'Шпакловка и боядисване',
-        'изолация': 'Фасадна изолация',
-        'строителство': 'Грубо строителство'
-    };
-    return names[serviceKey] || serviceKey;
-}
+    container.html(''); // Изчистване
 
-function getServiceColor(serviceKey) {
-    var colors = {
-        'мазилка': '#3498db',
-        'замазка': '#e67e22',
-        'бетон': '#95a5a6',
-        'шпакловка': '#2ecc71',
-        'изолация': '#e74c3c',
-        'строителство': '#34495e'
-    };
-    return colors[serviceKey] || '#2c3e50';
+    references.forEach(function (ref) {
+        const card = `
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="reference-card h-100">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="mb-1 fw-bold">${ref.name}</h5>
+                            <div class="mb-2 text-muted">
+                                <i class="fas fa-building me-1"></i> ${ref.company}
+                            </div>
+                            <span class="badge bg-light text-dark border">
+                                <i class="fas fa-tools me-1"></i> ${ref.service}
+                            </span>
+                        </div>
+                        <a href="tel:${ref.phone}" class="btn btn-primary btn-sm whitespace-nowrap ms-2 d-flex align-items-center">
+                            <i class="fas fa-phone me-2"></i> ${ref.phone}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.append(card);
+    });
+    console.log('References loaded successfully (Internal Data).');
 }
 
 // Функция за копиране на телефон
 function copyPhone(phone) {
     if (navigator.clipboard) {
-        navigator.clipboard.writeText(phone).then(function() {
+        navigator.clipboard.writeText(phone).then(function () {
             showNotification('Телефонът е копиран в клипборда!', 'success');
         });
     } else {
@@ -336,27 +300,27 @@ window.UnimasterApp = {
 // Работещи филтри за галерията
 function initSimpleGallery() {
     console.log('Инициализирам галерията...');
-    
+
     // Намери всички бутони и снимки
     const filterBtns = document.querySelectorAll('.gallery-filter');
     const photos = document.querySelectorAll('.gallery-photo');
-    
+
     console.log('Намерих', filterBtns.length, 'бутона и', photos.length, 'снимки');
-    
+
     // Добави event listener към всеки бутон
     filterBtns.forEach((btn, index) => {
-        btn.addEventListener('click', function(e) {
+        btn.addEventListener('click', function (e) {
             e.preventDefault();
-            
+
             const filter = this.getAttribute('data-filter');
             console.log('Натиснат филтър:', filter);
-            
+
             // Премахни активен клас от всички бутони
             filterBtns.forEach(b => b.classList.remove('active'));
-            
+
             // Добави активен клас на натиснатия бутон
             this.classList.add('active');
-            
+
             // Филтрирай снимките
             photos.forEach(photo => {
                 if (filter === 'all') {
@@ -378,44 +342,24 @@ function initSimpleGallery() {
     });
 }
 
-// Lightbox за снимки - работещ вариант
+// Галерия Lightbox
 function initPhotoLightbox() {
-    // Провери дали Magnific Popup е достъпен
-    if (typeof $.fn.magnificPopup !== 'undefined') {
-        $('.photo-item img').magnificPopup({
-            type: 'image',
-            gallery: {
-                enabled: true,
-                navigateByImgClick: true,
-                preload: [0,1]
-            },
-            image: {
-                titleSrc: function(item) {
-                    return item.el.attr('alt') || 'УниМастер - Проект';
-                }
-            },
-            zoom: {
-                enabled: true,
-                duration: 300
-            }
-        });
-        
-        console.log('Magnific Popup инициализиран успешно');
-    } else {
-        // Backup - прост lightbox без библиотека
-        console.log('Magnific Popup не е намерен, използвам прост lightbox');
-        initSimpleLightbox();
-    }
+    // ВИНАГИ използвай нашия къстъм lightbox, защото работи по-добре с текущия HTML
+    console.log('Force initializing Simple Lightbox...');
+    initSimpleLightbox();
 }
 
 // Прост lightbox без външни библиотеки
 function initSimpleLightbox() {
-    const images = document.querySelectorAll('.photo-item img');
-    
-    images.forEach(img => {
-        img.addEventListener('click', function() {
-            openLightbox(this.src, this.alt);
-        });
+    console.log('Initializing Delegated Lightbox...');
+    // Използваме делегиране на събития за да хванем кликове дори върху динамично добавени елементи
+    document.body.addEventListener('click', function (e) {
+        // Проверяваме дали кликнатият елемент е картинка вътре в .photo-item
+        if (e.target.tagName === 'IMG' && e.target.closest('.photo-item')) {
+            e.preventDefault();
+            console.log('Opening lightbox for:', e.target.src);
+            openLightbox(e.target.src, e.target.alt);
+        }
     });
 }
 
@@ -461,24 +405,24 @@ function openLightbox(src, alt) {
             </div>
         </div>
     `;
-    
+
     // Добави към body
     document.body.insertAdjacentHTML('beforeend', lightboxHTML);
-    
+
     // Добави event listeners за затваряне
     const overlay = document.getElementById('lightbox-overlay');
     const closeBtn = document.getElementById('lightbox-close');
-    
-    overlay.addEventListener('click', function(e) {
+
+    overlay.addEventListener('click', function (e) {
         if (e.target === overlay) {
             closeLightbox();
         }
     });
-    
+
     closeBtn.addEventListener('click', closeLightbox);
-    
+
     // Затвори с ESC клавиш
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             closeLightbox();
         }
@@ -495,16 +439,75 @@ function closeLightbox() {
 
 
 // Инициализация - ВАЖНО: изпълни след като DOM е готов
-$(document).ready(function() {
-    console.log('DOM е готов, стартирам функциите...');
-    
-    initNavigation();
-    initContactForm();
-    initPhotoLightbox();
-    initSimpleGallery(); // Работещите филтри
-    initAnimations();
-    initReferences();
+$(document).ready(function () {
+    console.log('DOM готов. Стартирам критични функции...');
+
+    // Зареждаме данните веднага
+    try {
+        loadReferencesFromJSON();
+    } catch (e) { console.error('References load failed:', e); }
+
+    try {
+        initMobileMenu();
+    } catch (e) { console.error('Mobile menu init failed:', e); }
+
+    try {
+        initSimpleGallery(); // Важно за бутоните
+    } catch (e) { console.error('Gallery init failed:', e); }
 });
+
+// Пълна инициализация след зареждане на всички ресурси (снимки и т.н.)
+$(window).load(function () {
+    console.log('Window loaded. Starting visual heavy apps...');
+
+    try {
+        initNavigation();
+    } catch (e) { console.error('Navigation init failed:', e); }
+
+    try {
+        initContactForm();
+    } catch (e) { console.error('Contact init failed:', e); }
+
+    try {
+        initPhotoLightbox();
+    } catch (e) { console.error('Lightbox init failed:', e); }
+
+    try {
+        initAnimations();
+    } catch (e) { console.error('Animations init failed:', e); }
+});
+
+// Backup: Mobile Menu Logic (ако не е дефинирана отвън)
+function initMobileMenu() {
+    console.log('Initializing mobile menu...');
+
+    // Prevent multiple bindings
+    $('#mobile-menu-btn').off('click').on('click', function (e) {
+        e.preventDefault();
+        var target = $(this).attr('data-target');
+        var $target = $(target);
+
+        if ($target.hasClass('show')) {
+            $target.removeClass('show');
+            $(this).removeClass('active');
+        } else {
+            $target.addClass('show');
+            $(this).addClass('active');
+        }
+    });
+
+    $('.mobile-nav-link').off('click').on('click', function () {
+        $('#navbarNav').removeClass('show');
+        $('#mobile-menu-btn').removeClass('active');
+    });
+
+    $(document).off('click.mobileMenu').on('click.mobileMenu', function (e) {
+        if (!$(e.target).closest('.navbar').length) {
+            $('#navbarNav').removeClass('show');
+            $('#mobile-menu-btn').removeClass('active');
+        }
+    });
+}
 
 
 

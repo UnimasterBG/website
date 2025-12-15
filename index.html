@@ -1,179 +1,27 @@
 <!DOCTYPE html>
 <html lang="bg">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <link rel="shortcut icon" type="x-icon" href="img/loggo.png">
     <title>УниМастер - Строителни и довършителни услуги</title>
-    <meta name="description" content="Професионални строителни услуги - мазилка с турбозол, замазки с хеликоптер, фасадна изолация, техника под наем в цяла България">
-    
+    <meta name="description"
+        content="Професионални строителни услуги - мазилка с турбозол, замазки с хеликоптер, фасадна изолация, техника под наем в цяла България">
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="fontawesome-5.5/css/all.min.css">
     <link rel="stylesheet" href="slick/slick.css">
     <link rel="stylesheet" href="slick/slick-theme.css">
     <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
-    <link rel="stylesheet" href="css/tooplate-infinite-loop.css">
-    <link rel="stylesheet" href="css/unimaster-styles.css">
-    
-    
-    <style>
-    /* Нови стилове за услугите */
-    .service-card {
-        background: white;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        padding: 30px;
-        text-align: center;
-        height: 100%;
-    }
-    
-    .service-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    }
-    
-    .service-icon {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 20px;
-        color: white;
-        font-size: 2rem;
-    }
-    
-    .equipment-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        border-radius: 10px;
-        padding: 20px;
-        margin-bottom: 20px;
-        transition: transform 0.3s ease;
-    }
-    
-    .equipment-card:hover {
-        transform: scale(1.05);
-    }
-    
-    .process-step {
-        background: white;
-        border-left: 4px solid var(--step-color, #3498db);
-        padding: 15px;
-        margin-bottom: 10px;
-        border-radius: 0 5px 5px 0;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    
-    .sticky-contacts {
-        position: fixed;
-        top: 50%;
-        right: 20px;
-        transform: translateY(-50%);
-        z-index: 1000;
-        background: rgba(52, 152, 219, 0.9);
-        padding: 15px;
-        border-radius: 50px;
-        backdrop-filter: blur(10px);
-    }
-    
-    .contact-btn {
-        display: block;
-        width: 50px;
-        height: 50px;
-        background: white;
-        color: #3498db;
-        border-radius: 50%;
-        text-align: center;
-        line-height: 50px;
-        margin-bottom: 10px;
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-    
-    .contact-btn:hover {
-        background: #3498db;
-        color: white;
-        transform: scale(1.1);
-        text-decoration: none;
-    }
-    
-    /* Hero секция */
-    .hero-section {
-        background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8)), 
-                    url('img/infinite-loop-01.jpg') center/cover;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        color: white;
-        text-align: center;
-    }
-    
-    .hero-title {
-        font-size: 3.5rem;
-        font-weight: 700;
-        margin-bottom: 20px;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.3rem;
-        margin-bottom: 10px;
-        opacity: 0.9;
-    }
-    
-    .section-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #2c3e50;
-        margin-bottom: 50px;
-        text-align: center;
-    }
-    
-    .navbar-custom {
-        background: rgba(44, 62, 80, 0.95);
-        backdrop-filter: blur(10px);
-    }
-    
-    .price-badge {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background: #e74c3c;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 15px;
-        font-size: 0.8rem;
-    }
-    
-    @media (max-width: 768px) {
-        .hero-title { font-size: 2.5rem; }
-        .sticky-contacts { 
-            bottom: 20px;
-            top: auto;
-            right: 20px;
-            transform: none;
-            display: flex;
-            flex-direction: row;
-            border-radius: 25px;
-            padding: 10px;
-        }
-        .contact-btn { 
-            width: 40px; 
-            height: 40px; 
-            line-height: 40px; 
-            margin-bottom: 0;
-            margin-right: 10px;
-        }
-        .contact-btn:last-child { margin-right: 0; }
-        .section-title { font-size: 2rem; }
-    }
-    </style>
+    <!-- <link rel="stylesheet" href="css/tooplate-infinite-loop.css"> Removed as file is missing -->
+    <link rel="stylesheet" href="css/unimaster-styles.css?v=5">
+
+
+    <!-- CSS moved to external file -->
 </head>
+
 <body>
     <!-- Залепени контакти -->
     <div class="sticky-contacts">
@@ -191,29 +39,29 @@
         </a>
     </div>
 
-<!-- Модерен Navbar - Fixed Mobile -->
-<nav class="navbar navbar-expand-lg fixed-top modern-navbar">
-    <div class="container">
-        <!-- Лого и име -->
-        <a class="navbar-brand brand-container" href="#home">
-            <img src="img/navbar-logo.png" alt="УниМастер ЕООД" class="navbar-logo">
-            <div class="brand-info">
-                <span class="brand-name">Unimaster</span>
-                <small class="brand-subtitle"></small>
-            </div>
-        </a>
-        
-        <!-- Mobile toggle - работещ вариант -->
-        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="mobile-menu-btn">
-            <span class="toggler-line"></span>
-            <span class="toggler-line"></span>
-            <span class="toggler-line"></span>
-        </button>
-        
-        <!-- Navigation Menu -->
+    <!-- Модерен Navbar - Fixed Mobile -->
+    <nav class="navbar navbar-expand-lg fixed-top modern-navbar">
+        <div class="container">
+            <!-- Лого и име -->
+            <a class="navbar-brand brand-container" href="#home">
+                <img src="img/navbar-logo.png" alt="УниМастер ЕООД" class="navbar-logo">
+                <div class="brand-info">
+                    <span class="brand-name">Unimaster</span>
+                    <small class="brand-subtitle"></small>
+                </div>
+            </a>
 
-                    <!-- Contact Info -->
+            <!-- Mobile toggle - работещ вариант -->
+            <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="mobile-menu-btn">
+                <span class="toggler-line"></span>
+                <span class="toggler-line"></span>
+                <span class="toggler-line"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+
+            <!-- Contact Info -->
             <div class="navbar-contact">
                 <div class="contact-number">
                     <a href="tel:+359899172879" class="phone-link">
@@ -222,106 +70,97 @@
                     </a>
                 </div>
             </div>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link active mobile-nav-link" href="#home">
-                        <i class="fas fa-home nav-icon"></i>
-                        <span>Начало</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mobile-nav-link" href="#services">
-                        <i class="fas fa-tools nav-icon"></i>
-                        <span>Услуги</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mobile-nav-link" href="#equipment">
-                        <i class="fas fa-truck nav-icon"></i>
-                        <span>Техника</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mobile-nav-link" href="#gallery">
-                        <i class="fas fa-images nav-icon"></i>
-                        <span>Галерия</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mobile-nav-link" href="#references">
-                        <i class="fas fa-star nav-icon"></i>
-                        <span>Референции</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mobile-nav-link" href="#contact">
-                        <i class="fas fa-envelope nav-icon"></i>
-                        <span>Контакти</span>
-                    </a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active mobile-nav-link" href="#home">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span>Начало</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mobile-nav-link" href="#services">
+                            <i class="fas fa-tools nav-icon"></i>
+                            <span>Услуги</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mobile-nav-link" href="#equipment">
+                            <i class="fas fa-truck nav-icon"></i>
+                            <span>Техника</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mobile-nav-link" href="#gallery">
+                            <i class="fas fa-images nav-icon"></i>
+                            <span>Галерия</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mobile-nav-link" href="#references">
+                            <i class="fas fa-star nav-icon"></i>
+                            <span>Референции</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mobile-nav-link" href="#contact">
+                            <i class="fas fa-envelope nav-icon"></i>
+                            <span>Контакти</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
 
 
-<!-- МИНИМАЛНА HERO СЕКЦИЯ -->
-<section class="hero-section-new" id="home">
-    <div class="container">
-        <!-- Header Row -->
-        <div class="row hero-header">
-            <div class="col-12">
-                <div class="hero-content">
-                    <h1 class="hero-title-new">
-                        Строим <span class="gradient-text">качество</span> в детайла
-                    </h1>
-                    <p class="hero-description">
-Фирма Унимастер е създадена,  за да представи на клиентите една нова, по-съвременна организация в строителството, свързана най-вече с добра логистика и много тясна връзка с клиента. Постарали сме се да организираме и доставим навреме целия необходим набор от работници, техника,   материали и машини, с които да изпълним вашите проекти с по-голяма интензивност в съкратени срокове, ако това ви е необходимо.
+    <!-- МИНИМАЛНА HERO СЕКЦИЯ -->
+    <section class="hero-section-new" id="home">
+        <div class="container">
+            <!-- Header Row -->
+            <div class="row hero-header">
+                <div class="col-12">
+                    <div class="hero-content">
+                        <h1 class="hero-title-new">
+                            Строим <span class="gradient-text">качество</span> в детайла
+                        </h1>
+                        <p class="hero-description">
+                            Фирма Унимастер е създадена, за да представи на клиентите една нова, по-съвременна
+                            организация в строителството, свързана най-вече с добра логистика и много тясна връзка с
+                            клиента. Постарали сме се да организираме и доставим навреме целия необходим набор от
+                            работници, техника, материали и машини, с които да изпълним вашите проекти с по-голяма
+                            интензивност в съкратени срокове, ако това ви е необходимо.
 
-В случай на нужда, ще ви предложим решения за изход от сложни ситуации или ще потърсим заедно иновативни начини за съкращаване на сроковете за строителство в разумни граници с реална перспектива.
-                    </p>
+                            В случай на нужда, ще ви предложим решения за изход от сложни ситуации или ще потърсим
+                            заедно иновативни начини за съкращаване на сроковете за строителство в разумни граници с
+                            реална перспектива.
+                        </p>
+                    </div>
                 </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="hero-cta">
+                <a href="#services" class="btn btn-primary btn-lg cta-primary">
+                    <i class="fas fa-eye"></i> Разгледай услугите
+                </a>
+                <a href="#contact" class="btn btn-outline-light btn-lg cta-secondary">
+                    <i class="fas fa-calculator"></i> Безплатна оферта
+                </a>
             </div>
         </div>
 
-        <!-- Call to Action -->
-        <div class="hero-cta">
-            <a href="#services" class="btn btn-primary btn-lg cta-primary">
-                <i class="fas fa-eye"></i> Разгледай услугите
-            </a>
-            <a href="#contact" class="btn btn-outline-light btn-lg cta-secondary">
-                <i class="fas fa-calculator"></i> Безплатна оферта
-            </a>
+        <!-- Background Elements -->
+        <div class="hero-bg-elements">
+            <div class="bg-shape shape-1"></div>
+            <div class="bg-shape shape-2"></div>
+            <div class="bg-shape shape-3"></div>
         </div>
-    </div>
-
-    <!-- Background Elements -->
-    <div class="hero-bg-elements">
-        <div class="bg-shape shape-1"></div>
-        <div class="bg-shape shape-2"></div>
-        <div class="bg-shape shape-3"></div>
-    </div>
-</section>
+    </section>
 
 
-        <!-- Call to Action -->
-        <div class="hero-cta">
-            </a>
-            <a href="#contact" class="btn btn-outline-light btn-lg cta-secondary">
-                <i class="fas fa-calculator"></i> Безплатна оферта
-            </a>
-        </div>
-    </div>
 
-    <!-- Background Elements -->
-    <div class="hero-bg-elements">
-        <div class="bg-shape shape-1"></div>
-        <div class="bg-shape shape-2"></div>
-        <div class="bg-shape shape-3"></div>
-    </div>
-</section>
 
 
 
@@ -333,11 +172,11 @@
             <div class="row">
                 <!-- Мазилка -->
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon" style="background: #3498db;">
+                    <div class="service-card" style="--service-color: #e67e22;">
+                        <div class="service-icon" style="background: #e67e22;">
                             <i class="fas fa-spray-can"></i>
                         </div>
-                        <h4 style="color: #3498db;">Мазилка по стени и тавани</h4>
+                        <h4 style="color: #e67e22;">Мазилка по стени и тавани</h4>
                         <p class="text-muted">Машинна мазилка с турбозол за перфектна гладкост и качество</p>
                         <ul class="text-start mt-3">
                             <li>Поставяне на маяци</li>
@@ -352,7 +191,7 @@
 
                 <!-- Замазки -->
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
+                    <div class="service-card" style="--service-color: #e67e22;">
                         <div class="service-icon" style="background: #e67e22;">
                             <i class="fas fa-layer-group"></i>
                         </div>
@@ -371,11 +210,11 @@
 
                 <!-- Стефан бетон -->
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon" style="background: #95a5a6;">
+                    <div class="service-card" style="--service-color: #2c3e50;">
+                        <div class="service-icon" style="background: #2c3e50;">
                             <i class="fas fa-cube"></i>
                         </div>
-                        <h4 style="color: #95a5a6;">Шлайфан бетон</h4>
+                        <h4 style="color: #2c3e50;">Шлайфан бетон</h4>
                         <p class="text-muted">За гаражи и паркоместа - здрави основи</p>
                         <ul class="text-start mt-3">
                             <li>Подготовка на терена</li>
@@ -388,12 +227,13 @@
                 </div>
 
                 <!-- Шпакловка -->
+                <!-- Шпакловка -->
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon" style="background: #2ecc71;">
+                    <div class="service-card" style="--service-color: #d35400;">
+                        <div class="service-icon" style="background: #d35400;">
                             <i class="fas fa-paint-roller"></i>
                         </div>
-                        <h4 style="color: #2ecc71;">Шпакловка и боядисване</h4>
+                        <h4 style="color: #d35400;">Шпакловка и боядисване</h4>
                         <p class="text-muted">Финални довършителни работи на стени и тавани</p>
                         <ul class="text-start mt-3">
                             <li>Машинно нанасяне</li>
@@ -408,11 +248,11 @@
 
                 <!-- Изолация -->
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon" style="background: #e74c3c;">
-                            <i class="fas fa-home"></i>
+                    <div class="service-card" style="--service-color: #c0392b;">
+                        <div class="service-icon" style="background: #c0392b;">
+                            <i class="fas fa-temperature-low"></i>
                         </div>
-                        <h4 style="color: #e74c3c;">Фасадна изолация</h4>
+                        <h4 style="color: #c0392b;">Топлоизолация</h4>
                         <p class="text-muted">Полагане на изолация с декоративни елементи</p>
                         <ul class="text-start mt-3">
                             <li>Почистване на фасада</li>
@@ -426,11 +266,11 @@
 
                 <!-- Грубо строителство -->
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon" style="background: #34495e;">
-                            <i class="fas fa-building"></i>
+                    <div class="service-card" style="--service-color: #2c3e50;">
+                        <div class="service-icon" style="background: #2c3e50;">
+                            <i class="fas fa-hammer"></i>
                         </div>
-                        <h4 style="color: #34495e;">Грубо строителство</h4>
+                        <h4 style="color: #2c3e50;">ГРУБ СТРОЕЖ</h4>
                         <p class="text-muted">Строителство до 8 етажа - от основи до покрив</p>
                         <ul class="text-start mt-3">
                             <li>Изкопни работи</li>
@@ -442,7 +282,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Техника под наем -->
@@ -464,493 +303,345 @@
         </div>
     </section>
 
-   <!-- Галерия -->
-<section id="gallery" class="py-5 bg-light">
-    <div class="container">
-        <h2 class="section-title">Галерия от наши проекти</h2>
-        
-        <!-- Филтри -->
-        <div class="text-center mb-4">
-            <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter active" data-filter="all">Всички</button>
-            <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter" data-filter="grub">Груб строеж</button>
-            <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter" data-filter="dovar">Довършителни</button>
-            <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter" data-filter="tech">Техника</button>
-            <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter" data-filter="ready">Готови</button>
-            <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter" data-filter="proj">Проекти</button>
+    <!-- Галерия -->
+    <section id="gallery" class="py-5 bg-light">
+        <div class="container">
+            <!-- NUCLEAR STYLE FIX FOR FILTERS -->
+            <style>
+                .gallery-filter {
+                    color: #e67e22 !important;
+                    border-color: #e67e22 !important;
+                    transition: all 0.3s ease;
+                }
+
+                .gallery-filter:hover {
+                    background-color: #e67e22 !important;
+                    color: white !important;
+                }
+
+                .gallery-filter.active,
+                .gallery-filter:focus,
+                .gallery-filter:active {
+                    background-color: #e67e22 !important;
+                    border-color: #e67e22 !important;
+                    color: white !important;
+                    box-shadow: 0 0 0 4px rgba(230, 126, 34, 0.3) !important;
+                }
+
+                /* CRITICAL: Hidden class for filtering */
+                .hidden {
+                    display: none !important;
+                }
+            </style>
+
+            <h2 class="section-title">Галерия от наши проекти</h2>
+
+            <!-- Филтри -->
+            <div class="text-center mb-4">
+                <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter active"
+                    onclick="filterGallery('all', this)">Всички</button>
+                <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter"
+                    onclick="filterGallery('grub', this)">Груб
+                    строеж</button>
+                <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter"
+                    onclick="filterGallery('dovar', this)">Довършителни</button>
+                <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter"
+                    onclick="filterGallery('tech', this)">Техника</button>
+                <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter"
+                    onclick="filterGallery('ready', this)">Готови</button>
+                <button class="btn btn-sm btn-outline-primary me-2 mb-2 gallery-filter"
+                    onclick="filterGallery('proj', this)">Проекти</button>
+            </div>
+
+            <!-- NUCLEAR FILTER SCRIPT -->
+            <script>
+                function filterGallery(category, btnElement) {
+                    console.log('Filtering gallery by:', category);
+
+                    // 1. Update buttons
+                    document.querySelectorAll('.gallery-filter').forEach(btn => btn.classList.remove('active'));
+                    btnElement.classList.add('active');
+
+                    // 2. Filter images
+                    const allPhotos = document.querySelectorAll('.gallery-photo');
+                    allPhotos.forEach(photo => {
+                        if (category === 'all') {
+                            photo.classList.remove('hidden');
+                        } else {
+                            if (photo.classList.contains(category)) {
+                                photo.classList.remove('hidden');
+                            } else {
+                                photo.classList.add('hidden');
+                            }
+                        }
+                    });
+                }
+            </script>
+            <!-- Трябва да имаш това в <head> или преди затварящия </body> -->
+
+            <!-- Снимки Grid -->
+
+            <div class="row g-2" id="gallery-items">
+                <!-- === ГРУБ СТРОЕЖ (GRUB) === -->
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                    <div class="photo-item"><img src="img/new-12.jpg" alt="Груб строеж"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                    <div class="photo-item"><img src="img/kushta1.jpg" alt="Груб строеж"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                    <div class="photo-item"><img src="img/stroej.jpg" alt="Груб строеж"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                    <div class="photo-item"><img src="img/stroej1.jpg" alt="Груб строеж"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                    <div class="photo-item"><img src="img/osnova.jpg" alt="Груб строеж"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                    <div class="photo-item"><img src="img/osnovi.jpg" alt="Груб строеж"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                    <div class="photo-item"><img src="img/new-13.jpg" alt="Груб строеж"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                    <div class="photo-item"><img src="img/new-16.jpg" alt="Груб строеж"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                    <div class="photo-item"><img src="img/new-17.jpg" alt="Груб строеж"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                    <div class="photo-item"><img src="img/73fa3a55-8c8d-46a1-b311-222498685d22.jpg"
+                            alt="Строителна площадка с кран"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                    <div class="photo-item"><img src="img/d0d0d713-9ae1-4447-8b4b-1eb42dc21edc.jpg"
+                            alt="Жилищен комплекс в строеж"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
+                    <div class="photo-item"><img src="img/cdfdbaff-c6c5-4d3f-ba06-765039bc39e0.jpg"
+                            alt="Бетонна плоча с арматура"></div>
+                </div>
+
+                <!-- === ДОВЪРШИТЕЛНИ (DOVAR) === -->
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo dovar">
+                    <div class="photo-item"><img src="img/d5ff5d1e-d1ae-4dcc-9ec3-56d9a3853585.jpg"
+                            alt="Замазка по подове"></div>
+                </div>
+
+                <!-- === ТЕХНИКА (TECH) === -->
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/bager123.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/bager1234.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/bager12345.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/kirov.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/kompress.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/kompress1.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/bager.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/bager4e.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/new-4.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/bus.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/new-5.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/new-10.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/mashina.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/mashina1.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/turbo.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/turbo1.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/turbo2.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/kompressor.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/kran.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/onoven bus.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/rabotnici.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/turbo3.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/turbo4.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/mrusn.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/new-18.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/new-19.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/new-22.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/new-23.jpg" alt="Техника"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/0a60310c-1d7b-42cb-988f-5f811f008a0a.jpg" alt="Бобкат"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/3de7c49f-a768-469f-8e8e-d63a5f6d7a1b.jpg"
+                            alt="Помпа за бетон"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/5d597a4d-eee8-45d7-ac79-12cabd3847a0.jpg"
+                            alt="Бетоновоз Mercedes"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/673ad788-0209-4ead-8a89-10112d3d4100.jpg"
+                            alt="Машина за мазилка PFT"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/8495c786-d9dc-4d9f-afca-5fe46306a061.jpg"
+                            alt="Строителен кран"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/a3adaeb1-1af4-4114-b930-635d95481708.jpg" alt="Машина PFT">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/45442dfa-da3c-4b60-8f00-45b9ad1f0014.jpg"
+                            alt="Специална машина"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/ba329bfe-edba-4381-92d9-d0b48df2ffa5.jpg" alt="Багер Kubota">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
+                    <div class="photo-item"><img src="img/5cc78958-fd7f-4311-8652-4fcf5be62499.jpg"
+                            alt="Жираф за шпакловка"></div>
+                </div>
+
+                <!-- === ГОТОВИ ОБЕКТИ (READY) === -->
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/new-1.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/kushta.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/new-7.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/new-8.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/new-15.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/staq1.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/staq2.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/staq3.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/staq4.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/staq5.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/staq6.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/staq7.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/staq8.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/gotova-kushta.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/gotova-kushta1.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/gotova-kushta2.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/gotova-kushta3.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/new-26.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/new-27.jpg" alt="Готов обект"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/4f604b5a-109d-438e-9371-5f6494236123.jpg"
+                            alt="Завършена жилищна сграда"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/96e6e9a0-9872-4e91-8838-1129d0553c6b.jpg"
+                            alt="Модерна жилищна сграда"></div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
+                    <div class="photo-item"><img src="img/e62f516b-2ec1-4ddb-a648-7fcf17af256e.jpg"
+                            alt="Луксозен жилищен комплекс"></div>
+                </div>
+
+    </section>
+
+
+    <!-- Референции с отзиви -->
+    <section id="references" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Референции от клиенти</h2>
+            <p class="text-center mb-5 text-muted">Свържете се директно с нашите доволни клиенти за препоръки</p>
+
+            <!-- Референции ще се зареждат тук от JSON -->
+            <div class="row" id="references-container">
+                <!-- Зареждат се автоматично от JavaScript -->
+            </div>
         </div>
-        <!-- Трябва да имаш това в <head> или преди затварящия </body> -->
-
-        <!-- Снимки Grid -->
-         
-        <div class="row g-2" id="gallery-items"> 
-            <!-- Груб строеж -->
-            
-<!-- ПОПРАВЕНА ГАЛЕРИЯ -->
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/new-1.jpg" alt="Готов обект">
-                </div>
-            </div>
-            
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/bager123.jpg" alt="Техника">
-                </div>
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/bager1234.jpg" alt="Техника">
-                </div>
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/bager12345.jpg" alt="Техника">
-                </div>
-            </div>
-
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/kirov.jpg" alt="Техника">
-                </div>
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/kompress.jpg" alt="Техника">
-                </div>
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/kompress1.jpg" alt="Техника">
-                </div>
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/bager.jpg" alt="Техника">
-                </div>
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/bager4e.jpg" alt="Техника">
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/new-4.jpg" alt="Техника">
-                </div>
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/bus.jpg" alt="Техника">
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/new-5.jpg" alt="Техника">
-                </div>
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/kushta.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/new-7.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/new-8.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/new-10.jpg" alt="Техника">
-                </div>
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/mashina.jpg" alt="Техника">
-                </div>
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/mashina1.jpg" alt="Техника">
-                </div>
-            </div>
-
-                                    <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/turbo.jpg" alt="Техника">
-                </div>
-            </div>
-
-                                    <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/turbo1.jpg" alt="Техника">
-                </div>
-            </div>
-
-                                    <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/turbo2.jpg" alt="Техника">
-                </div>
-            </div>
-
-                                                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/kompressor.jpg" alt="Техника">
-                </div>
-            </div>
-
-                                                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/kran.jpg" alt="Техника">
-                </div>
-            </div>
-
-                                                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/onoven bus.jpg" alt="Техника">
-                </div>
-            </div>
-
-                                                <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/rabotnici.jpg" alt="Техника">
-                </div>
-            </div>
-
-                                    <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/turbo3.jpg" alt="Техника">
-                </div>
-            </div>
-
-
-                                    <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/turbo4.jpg" alt="Техника">
-                </div>
-            </div>
-
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/mrusn.jpg" alt="Техника">
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
-                <div class="photo-item">
-                    <img src="img/new-12.jpg" alt="Груб строеж">
-                </div>
-            </div>
-
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
-                <div class="photo-item">
-                    <img src="img/kushta1.jpg" alt="Груб строеж">
-                </div>
-
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
-                <div class="photo-item">
-                    <img src="img/stroej.jpg" alt="Груб строеж">
-                </div>
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
-                <div class="photo-item">
-                    <img src="img/stroej1.jpg" alt="Груб строеж">
-                </div>
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
-                <div class="photo-item">
-                    <img src="img/osnova.jpg" alt="Груб строеж">
-                </div>
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
-                <div class="photo-item">
-                    <img src="img/osnovi.jpg" alt="Груб строеж">
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
-                <div class="photo-item">
-                    <img src="img/new-13.jpg" alt="Груб строеж">
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/new-15.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/staq1.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-                        <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/staq2.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-                                    <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/staq3.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-                                    <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/staq4.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-                                    <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/staq5.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-                                    <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/staq6.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-                                    <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/staq7.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-                                    <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/staq8.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-              <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/gotova-kushta.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-                          <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/gotova-kushta1.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-                          <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/gotova-kushta2.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-                          <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/gotova-kushta3.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
-                <div class="photo-item">
-                    <img src="img/new-16.jpg" alt="Груб строеж">
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
-                <div class="photo-item">
-                    <img src="img/new-17.jpg" alt="Груб строеж">
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/new-18.jpg" alt="Техника">
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/new-19.jpg" alt="Техника">
-                </div>
-            </div>
-
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/new-22.jpg" alt="Техника">
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/new-23.jpg" alt="Техника">
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/new-26.jpg" alt="Готов обект">
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/new-27.jpg" alt="Готов обект">
-                </div>
-            </div>
-            
-            
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
-                <div class="photo-item">
-                    <img src="img/73fa3a55-8c8d-46a1-b311-222498685d22.jpg" alt="Строителна площадка с кран">
-                </div>
-            </div>
-            
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
-                <div class="photo-item">
-                    <img src="img/d0d0d713-9ae1-4447-8b4b-1eb42dc21edc.jpg" alt="Жилищен комплекс в строеж">
-                </div>
-            </div>
-            
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo grub">
-                <div class="photo-item">
-                    <img src="img/cdfdbaff-c6c5-4d3f-ba06-765039bc39e0.jpg" alt="Бетонна плоча с арматура">
-                </div>
-            </div>
-            
-            <!-- Довършителни работи -->
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo dovar">
-                <div class="photo-item">
-                    <img src="img/d5ff5d1e-d1ae-4dcc-9ec3-56d9a3853585.jpg" alt="Замазка по подове">
-                </div>
-            </div>
-            
-            <!-- Техника -->
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/0a60310c-1d7b-42cb-988f-5f811f008a0a.jpg" alt="Бобкат">
-                </div>
-            </div>
-            
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/3de7c49f-a768-469f-8e8e-d63a5f6d7a1b.jpg" alt="Помпа за бетон">
-                </div>
-            </div>
-            
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/5d597a4d-eee8-45d7-ac79-12cabd3847a0.jpg" alt="Бетоновоз Mercedes">
-                </div>
-            </div>
-            
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/673ad788-0209-4ead-8a89-10112d3d4100.jpg" alt="Машина за мазилка PFT">
-                </div>
-            </div>
-            
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/8495c786-d9dc-4d9f-afca-5fe46306a061.jpg" alt="Строителен кран">
-                </div>
-            </div>
-            
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/a3adaeb1-1af4-4114-b930-635d95481708.jpg" alt="Машина PFT">
-                </div>
-            </div>
-            
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/45442dfa-da3c-4b60-8f00-45b9ad1f0014.jpg" alt="Специална машина">
-                </div>
-            </div>
-            
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/ba329bfe-edba-4381-92d9-d0b48df2ffa5.jpg" alt="Багер Kubota">
-                </div>
-            </div>
-            
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo tech">
-                <div class="photo-item">
-                    <img src="img/5cc78958-fd7f-4311-8652-4fcf5be62499.jpg" alt="Жираф за шпакловка">
-                </div>
-            </div>
-            
-            <!-- Готови обекти -->
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/4f604b5a-109d-438e-9371-5f6494236123.jpg" alt="Завършена жилищна сграда">
-                </div>
-            </div>
-            
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/96e6e9a0-9872-4e91-8838-1129d0553c6b.jpg" alt="Модерна жилищна сграда">
-                </div>
-            </div>
-            
-            <div class="col-6 col-md-4 col-lg-3 gallery-photo ready">
-                <div class="photo-item">
-                    <img src="img/e62f516b-2ec1-4ddb-a648-7fcf17af256e.jpg" alt="Луксозен жилищен комплекс">
-                </div>
-            </div>
-
-</section>
-
-
-<!-- Референции с отзиви -->
-<section id="references" class="py-5 bg-light">
-    <div class="container">
-        <h2 class="section-title">Референции от клиенти</h2>
-        <p class="text-center mb-5 text-muted">Свържете се директно с нашите доволни клиенти за препоръки</p>
-        
-        <!-- Референции ще се зареждат тук от JSON -->
-        <div class="row" id="references-container">
-            <!-- Зареждат се автоматично от JavaScript -->
-        </div>
-    </div>
-</section>
+    </section>
 
 
 
 
     <!-- Форма за контакт -->
-   
+
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-4" id="contact">
@@ -963,16 +654,21 @@
                 <div class="col-lg-4">
                     <h5>Контакти</h5>
                     <p>
-                        <i class="fas fa-phone me-2"></i><a href="tel:+359899172879" class="text-white">+359 899 172 879</a><br>
-                        <i class="fas fa-envelope me-2"></i><a href="mailto:a10@abv.bg" class="text-white">a10@abv.bg</a>
+                        <i class="fas fa-phone me-2"></i><a href="tel:+359899172879" class="text-white">+359 899 172
+                            879</a><br>
+                        <i class="fas fa-envelope me-2"></i><a href="mailto:a10@abv.bg"
+                            class="text-white">a10@abv.bg</a>
                     </p>
                 </div>
                 <div class="col-lg-4">
                     <h5>Социални мрежи</h5>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/solomon.serveces" class="text-white me-3"><i class="fab fa-facebook-f fa-2x"></i></a>
-                        <a href="viber://chat?number=359899172879" class="text-white me-3"><i class="fab fa-viber fa-2x"></i></a>
-                        <a href="https://wa.me/359899172879" class="text-white"><i class="fab fa-whatsapp fa-2x"></i></a>
+                        <a href="https://www.facebook.com/solomon.serveces" class="text-white me-3"><i
+                                class="fab fa-facebook-f fa-2x"></i></a>
+                        <a href="viber://chat?number=359899172879" class="text-white me-3"><i
+                                class="fab fa-viber fa-2x"></i></a>
+                        <a href="https://wa.me/359899172879" class="text-white"><i
+                                class="fab fa-whatsapp fa-2x"></i></a>
                     </div>
                 </div>
             </div>
@@ -990,365 +686,174 @@
     <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
     <script src="js/jquery.singlePageNav.min.js"></script>
     <script src="js/easing.min.js"></script>
-    <script src="js/unimaster-app.js"></script>
+    <!-- <script src="js/data-config.js"></script> Moved to app.js -->
+    <script src="js/unimaster-app.js?v=4"></script>
 
-    <script>
-    // Навигация
-    $(document).ready(function() {
-        $('.navbar-nav').singlePageNav({
-            offset: 70
-        });
-    });
 
-    // Показване на референции
-    function showReferences() {
-        var references = {
-            'мазилка': [
-                { name: 'Иван Петров', company: 'Строй ЕООД', phone: '+359 888 123 456' },
-                { name: 'Мария Георгиева', company: 'Частен клиент', phone: '+359 887 654 321' }
-            ],
-            'замазка': [
-                { name: 'Стоян Димитров', company: 'БГ Строй АД', phone: '+359 889 111 222' }
-            ],
-            'бетон': [
-                { name: 'Александър Йорданов', company: 'Индустри ЕООД', phone: '+359 885 555 666' }
-            ]
-        };
-        
-        var html = '<div class="modal fade" id="referencesModal" tabindex="-1">';
-        html += '<div class="modal-dialog modal-lg">';
-        html += '<div class="modal-content">';
-        html += '<div class="modal-header">';
-        html += '<h5 class="modal-title">Референции от клиенти</h5>';
-        html += '<button type="button" class="btn-close" data-bs-dismiss="modal"></button>';
-        html += '</div>';
-        html += '<div class="modal-body">';
-        
-        for (var service in references) {
-            html += `<div class="mb-4">`;
-            html += `<h6 class="text-primary"><i class="fas fa-tools me-2"></i>${service.toUpperCase()}</h6>`;
-            
-            references[service].forEach(function(ref) {
-                html += '<div class="d-flex justify-content-between align-items-center border-bottom py-2">';
-                html += `<div><strong>${ref.name}</strong><br><small class="text-muted">${ref.company}</small></div>`;
-                html += `<a href="tel:${ref.phone}" class="btn btn-sm btn-outline-primary">${ref.phone}</a>`;
-                html += '</div>';
-            });
-            
-            html += '</div>';
+
+    <!-- NUCLEAR CSS OVERRIDE: FORCE ORANGE -->
+    <style>
+        /* Sticky Contacts Override */
+        .sticky-contacts {
+            background: rgba(230, 126, 34, 0.9) !important;
+            backdrop-filter: blur(10px);
         }
-        
-        html += '</div>';
-        html += '<div class="modal-footer">';
-        html += '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Затвори</button>';
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        
-        $('#referencesModal').remove();
-        $('body').append(html);
-        $('#referencesModal').modal('show');
-    }
 
+        .contact-btn {
+            color: #e67e22 !important;
+        }
+
+        .contact-btn:hover {
+            background: #e67e22 !important;
+            color: white !important;
+        }
+
+        /* Nav Link Override */
+        .navbar-nav .nav-link:hover {
+            color: #e67e22 !important;
+        }
+
+        .navbar-nav .nav-link.active {
+            background: linear-gradient(135deg, #e67e22, #d35400) !important;
+        }
+    </style>
+
+    <!-- NUCLEAR REFERENCES FIX: INLINE SCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("FORCE INJECTING REFERENCES...");
+            const container = document.getElementById('references-container');
+            if (container) {
+                container.innerHTML = '';
+                const refs = [
+                    { name: "Кристина Сунгарска", phone: "+359882021440", company: "Частен клиент", service: "Строителни работи" },
+                    { name: "Илиян Марков", phone: "+359878831977", company: "Къща в Филиповци", service: "Строителство" },
+                    { name: "Крипс Петко", phone: "+359878284629", company: "Частен клиент", service: "Строителни услуги" },
+                    { name: "Иван Иванов", phone: "+359896834326", company: "Марка Röfix", service: "Мазилка и изолация" },
+                    { name: "Стефан Личев", phone: "+359896655135", company: "Строителна фирма 'Вечил 1' ООД", service: "Строителство" },
+                    { name: "Иво Изолации Вебер", phone: "+359887808876", company: "Изолации Вебер", service: "Топлоизолация" },
+                    { name: "Петко", phone: "+359878284629", company: "Крипс", service: "Измазване" }
+                ];
+
+                refs.forEach(ref => {
+                    const col = document.createElement('div');
+                    col.className = 'col-lg-6 col-md-12 mb-4';
+                    col.innerHTML = `
+                        <div class="reference-card h-100" style="background:white; border-radius:10px; padding:20px; box-shadow:0 5px 15px rgba(0,0,0,0.1); border-left:4px solid #e67e22;">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5 class="mb-1 fw-bold">${ref.name}</h5>
+                                    <div class="mb-2 text-muted">
+                                        <i class="fas fa-building me-1"></i> ${ref.company}
+                                    </div>
+                                    <span class="badge bg-light text-dark border">
+                                        <i class="fas fa-tools me-1"></i> ${ref.service}
+                                    </span>
+                                </div>
+                                <a href="tel:${ref.phone}" class="btn btn-primary btn-sm whitespace-nowrap ms-2 d-flex align-items-center" style="background-color: #e67e22; border-color: #e67e22;">
+                                    <i class="fas fa-phone me-2"></i> ${ref.phone}
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(col);
+                });
+            } else {
+                console.error("FATAL: References container not found even in inline script!");
+            }
+        });
     </script>
+    <!-- NUCLEAR LIGHTBOX FIX: INLINE SCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("FORCE INJECTING LIGHTBOX...");
 
-<script>
-// Тест на филтрите
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Тестирам филтрите...');
-    
-    const filterBtns = document.querySelectorAll('.gallery-filter');
-    const photos = document.querySelectorAll('.gallery-photo');
-    
-    console.log('Филтър бутони:', filterBtns.length);
-    console.log('Снимки:', photos.length);
-    
-    if (filterBtns.length === 0) {
-        console.error('Няма намерени филтър бутони!');
-    }
-    
-    if (photos.length === 0) {
-        console.error('Няма намерени снимки!');
-    }
-    
-    // Добави click event на всеки бутон
-    filterBtns.forEach(function(btn) {
-        btn.onclick = function() {
-            console.log('Бутон натиснат:', this.getAttribute('data-filter'));
-            
-            const filter = this.getAttribute('data-filter');
-            
-            // Активен бутон
-            filterBtns.forEach(function(b) {
-                b.classList.remove('active');
-            });
-            this.classList.add('active');
-            
-            // Филтър
-            photos.forEach(function(photo) {
-                if (filter === 'all') {
-                    photo.classList.remove('hidden');
-                    photo.style.display = 'block';
-                } else {
-                    if (photo.classList.contains(filter)) {
-                        photo.classList.remove('hidden');
-                        photo.style.display = 'block';
-                    } else {
-                        photo.classList.add('hidden');
-                        photo.style.display = 'none';
-                    }
-                }
-            });
-        };
-    });
-});
-</script>
-
-<script>
-// Простичък lightbox който работи навсякъде
-document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('.photo-item img');
-    
-    images.forEach(function(img) {
-        img.style.cursor = 'pointer';
-        
-        img.addEventListener('click', function() {
-            // Създай lightbox
-            const lightbox = document.createElement('div');
-            lightbox.id = 'simple-lightbox';
-            lightbox.innerHTML = `
-                <div style="
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100vw;
-                    height: 100vh;
-                    background: rgba(0,0,0,0.95);
-                    z-index: 99999;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    cursor: pointer;
-                ">
-                    <div style="position: relative; max-width: 95%; max-height: 95%;">
-                        <img src="${this.src}" alt="${this.alt}" style="
-                            max-width: 100%;
-                            max-height: 100vh;
-                            object-fit: contain;
-                            border-radius: 8px;
-                        ">
-                        <div style="
-                            position: absolute;
-                            top: -20px;
-                            right: -20px;
-                            background: white;
-                            border-radius: 50%;
-                            width: 40px;
-                            height: 40px;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            cursor: pointer;
-                            font-size: 24px;
-                            font-weight: bold;
-                            color: #333;
-                            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-                        " onclick="document.getElementById('simple-lightbox').remove()">
-                            ×
+            // Create Lightbox Overlay if it doesn't exist
+            if (!document.getElementById('lightbox-overlay')) {
+                const lightboxHTML = `
+                    <div id="lightbox-overlay" style="
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.9);
+                        z-index: 10000;
+                        display: none;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                    ">
+                        <div style="position: relative; max-width: 90%; max-height: 90%;">
+                            <img id="lightbox-img" src="" alt="" style="
+                                max-width: 100%;
+                                max-height: 90vh;
+                                border-radius: 8px;
+                                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                                object-fit: contain;
+                            ">
+                            <button id="lightbox-close-btn" style="
+                                position: absolute;
+                                top: -20px;
+                                right: -20px;
+                                background: white;
+                                border: none;
+                                border-radius: 50%;
+                                width: 40px;
+                                height: 40px;
+                                cursor: pointer;
+                                font-size: 24px;
+                                font-weight: bold;
+                                color: #333;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                                z-index: 10001;
+                            ">&times;</button>
                         </div>
                     </div>
-                </div>
-            `;
-            
-            // Затвори при клик навсякъде
-            lightbox.addEventListener('click', function(e) {
-                if (e.target === lightbox || e.target === lightbox.firstElementChild) {
-                    lightbox.remove();
-                }
+                `;
+                document.body.insertAdjacentHTML('beforeend', lightboxHTML);
+            }
+
+            const overlay = document.getElementById('lightbox-overlay');
+            const imgElement = document.getElementById('lightbox-img');
+            const closeBtn = document.getElementById('lightbox-close-btn');
+
+            function openLightbox(src, alt) {
+                console.log("Opening lightbox for", src);
+                imgElement.src = src;
+                imgElement.alt = alt || 'Gallery Image';
+                overlay.style.display = 'flex';
+            }
+
+            function closeLightbox() {
+                overlay.style.display = 'none';
+                imgElement.src = '';
+            }
+
+            // Close events
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeLightbox();
             });
-            
-            // Затвори с ESC
-            const escHandler = function(e) {
-                if (e.key === 'Escape') {
-                    lightbox.remove();
-                    document.removeEventListener('keydown', escHandler);
-                }
-            };
-            document.addEventListener('keydown', escHandler);
-            
-            document.body.appendChild(lightbox);
-        });
-    });
-});
-</script>
-
-<script>
-// Обновена навигация
-function initNavigation() {
-    // Smooth scroll
-    $('.navbar-nav a[href^="#"]').on('click', function(e) {
-        e.preventDefault();
-        var target = this.hash;
-        var $target = $(target);
-        
-        if ($target.length) {
-            // Затвори mobile menu
-            $('.navbar-collapse').collapse('hide');
-            
-            $('html, body').animate({
-                'scrollTop': $target.offset().top - 80
-            }, 800, 'swing');
-        }
-    });
-    
-    // Активен линк и navbar промяна при скрол
-    $(window).scroll(function() {
-        var scrollDistance = $(window).scrollTop() + 100;
-        
-        // Активен линк
-        $('section').each(function() {
-            if ($(this).position().top <= scrollDistance) {
-                $('.navbar-nav a.active').removeClass('active');
-                $('.navbar-nav a[href="#' + $(this).attr('id') + '"]').addClass('active');
-            }
-        });
-        
-        // Navbar стил при скрол
-        if ($(this).scrollTop() > 50) {
-            $('.modern-navbar').addClass('scrolled');
-        } else {
-            $('.modern-navbar').removeClass('scrolled');
-        }
-    });
-}
-
-</script>
-
-<script>
-// Мобилно меню - работещо решение
-$(document).ready(function() {
-    console.log('Инициализирам мобилното меню...');
-    
-    // Мобилен toggle бутон
-    $('#mobile-menu-btn').on('click', function(e) {
-        e.preventDefault();
-        console.log('Mobile menu button clicked');
-        
-        var target = $(this).attr('data-target');
-        var $target = $(target);
-        
-        if ($target.hasClass('show')) {
-            $target.removeClass('show');
-            $(this).removeClass('active');
-            console.log('Closing mobile menu');
-        } else {
-            $target.addClass('show');
-            $(this).addClass('active');
-            console.log('Opening mobile menu');
-        }
-    });
-    
-    // Затвори менюто при клик на линк
-    $('.mobile-nav-link').on('click', function() {
-        $('#navbarNav').removeClass('show');
-        $('#mobile-menu-btn').removeClass('active');
-        console.log('Closing menu after link click');
-    });
-    
-    // Затвори менюто при клик извън него
-    $(document).on('click', function(e) {
-        if (!$(e.target).closest('.navbar').length) {
-            $('#navbarNav').removeClass('show');
-            $('#mobile-menu-btn').removeClass('active');
-        }
-    });
-});
-
-// Backup решение ако jQuery не работи
-document.addEventListener('DOMContentLoaded', function() {
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('navbarNav');
-    const menuLinks = document.querySelectorAll('.mobile-nav-link');
-    
-    if (menuBtn && menu) {
-        menuBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            if (menu.classList.contains('show')) {
-                menu.classList.remove('show');
-                menuBtn.classList.remove('active');
-            } else {
-                menu.classList.add('show');
-                menuBtn.classList.add('active');
-            }
-        });
-        
-        // Затвори при клик на линк
-        menuLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
-                menu.classList.remove('show');
-                menuBtn.classList.remove('active');
+            overlay.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeLightbox();
             });
+
+            // Delegated Click Listener for Images
+            document.body.addEventListener('click', function (e) {
+                // Check if clicked element is an image in the gallery
+                if (e.target.tagName === 'IMG' && e.target.closest('.photo-item')) {
+                    e.preventDefault();
+                    e.stopPropagation(); // Stop other scripts from interfering
+                    openLightbox(e.target.src, e.target.alt);
+                }
+            }, true); // Use Capture phase to ensure we catch it first
         });
-    }
-});
-</script>
-
-<script src="js/data-config.js"></script>
-<script>
-// УниМастер - Динамично зареждане от JSON
-
-$(document).ready(function() {
-    initNavigation();
-    initContactForm();
-    initPhotoLightbox();
-    loadReferencesFromJSON();
-    loadGalleryFromJSON();
-    initSimpleGallery();
-    initAnimations();
-});
-
-// Зареди референции от JSON
-function loadReferencesFromJSON() {
-    const container = document.getElementById('references-container');
-    const references = window.unimasterData.references;
-    
-    references.forEach(ref => {
-        const refCard = `
-            <div class="col-lg-6 mb-4">
-                    <div class="testimonial-author">
-                        <strong>${ref.name}</strong>
-                        <small class="text-muted d-block">${ref.company} - ${ref.service}</small>
-                        <a href="tel:${ref.phone}" class="btn btn-sm btn-primary mt-2">
-                            <i class="fas fa-phone me-1"></i>${ref.phone}
-                        </a>
-                    </div>
-            </div>
-        `;
-        container.innerHTML += refCard;
-    });
-}
-
-
-
-function initPhotoLightbox() {
-    if (typeof $.fn.magnificPopup !== 'undefined') {
-        $('.photo-item img').magnificPopup({
-            type: 'image',
-            gallery: {
-                enabled: true,
-                navigateByImgClick: true
-            }
-        });
-    }
-}
-
-
-
-// Останалите функции (initNavigation, initContactForm, etc.)...
-</script>
-
-
+    </script>
 </body>
+
 </html>
