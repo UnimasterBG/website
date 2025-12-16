@@ -365,26 +365,7 @@
 /* Мобилни оптимизации */
 @media (max-width: 768px) {
     .sticky-contacts {
-        bottom: 20px;
-        top: auto;
-        right: 20px;
-        transform: none;
-        display: flex;
-        flex-direction: row;
-        border-radius: 25px;
-        padding: 10px;
-    }
-
-    .contact-btn {
-        margin-bottom: 0;
-        margin-right: 10px;
-        width: 45px;
-        height: 45px;
-        line-height: 45px;
-    }
-
-    .contact-btn:last-child {
-        margin-right: 0;
+        display: none !important;
     }
 
     .hero-title {
@@ -804,26 +785,7 @@ footer a:hover {
 /* Мобилни оптимизации */
 @media (max-width: 768px) {
     .sticky-contacts {
-        bottom: 20px;
-        top: auto;
-        right: 20px;
-        transform: none;
-        display: flex;
-        flex-direction: row;
-        border-radius: 25px;
-        padding: 10px;
-    }
-
-    .contact-btn {
-        margin-bottom: 0;
-        margin-right: 10px;
-        width: 45px;
-        height: 45px;
-        line-height: 45px;
-    }
-
-    .contact-btn:last-child {
-        margin-right: 0;
+        display: none !important;
     }
 
     .hero-title {
@@ -1397,7 +1359,7 @@ footer a:hover {
         top: 100%;
         left: 15px;
         right: 15px;
-        z-index: 1000;
+        z-index: 1050;
         max-height: 0;
         overflow: hidden;
         opacity: 0;
@@ -1800,7 +1762,7 @@ footer a:hover {
     top: 50%;
     right: 20px;
     transform: translateY(-50%);
-    z-index: 1000;
+    z-index: 999;
     background: rgba(52, 152, 219, 0.9);
     padding: 15px;
     border-radius: 50px;
