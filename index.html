@@ -622,6 +622,107 @@
         // Initialize
         loadContent();
     </script>
+
+    <!-- LIGHTBOX FOR GALLERY IMAGES -->
+    <div id="lightbox-overlay" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 10000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    ">
+        <div style="position: relative; max-width: 95%; max-height: 95vh;">
+            <img id="lightbox-img" src="" alt="" style="
+                max-width: 100%;
+                max-height: 95vh;
+                border-radius: 8px;
+                box-shadow: 0 10px 50px rgba(0, 0, 0, 0.8);
+                object-fit: contain;
+            ">
+            <button id="lightbox-close-btn" style="
+                position: absolute;
+                top: -15px;
+                right: -15px;
+                background: #e67e22;
+                border: none;
+                border-radius: 50%;
+                width: 45px;
+                height: 45px;
+                cursor: pointer;
+                font-size: 28px;
+                font-weight: bold;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 15px rgba(230, 126, 34, 0.5);
+                z-index: 10001;
+                transition: all 0.3s ease;
+            " onmouseover="this.style.transform='scale(1.1)'"
+                onmouseout="this.style.transform='scale(1)'">&times;</button>
+        </div>
+    </div>
+
+    <script>
+        // Lightbox functionality
+        (function () {
+            const overlay = document.getElementById('lightbox-overlay');
+            const imgElement = document.getElementById('lightbox-img');
+            const closeBtn = document.getElementById('lightbox-close-btn');
+
+            function openLightbox(src, alt) {
+                console.log("Opening lightbox for:", src);
+                imgElement.src = src;
+                imgElement.alt = alt || 'Gallery Image';
+                overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+
+            function closeLightbox() {
+                overlay.style.display = 'none';
+                imgElement.src = '';
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+
+            // Close on button click
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeLightbox();
+            });
+
+            // Close on overlay click (but not on image)
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    closeLightbox();
+                }
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && overlay.style.display === 'flex') {
+                    closeLightbox();
+                }
+            });
+
+            // Event delegation for dynamically loaded images
+            document.addEventListener('click', function (e) {
+                // Check if clicked element is an image inside .photo-item
+                if (e.target.tagName === 'IMG' && e.target.closest('.photo-item')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openLightbox(e.target.src, e.target.alt);
+                }
+            }, true); // Use capture phase for better reliability
+
+            console.log("Lightbox initialized successfully!");
+        })();
+    </script>
 </body>
 
 </html>
