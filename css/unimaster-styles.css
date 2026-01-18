@@ -146,6 +146,28 @@
     font-weight: 500;
 }
 
+/* Hero Services List */
+.hero-services-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.hero-services-list li {
+    font-size: 1.1rem;
+    padding: 8px 0;
+    color: #f8f9fa;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-services-list li i {
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+
 /* Call to Action */
 .hero-cta {
     display: flex;
