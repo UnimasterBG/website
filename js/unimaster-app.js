@@ -18,11 +18,30 @@ function initNavigation() {
 
     // Промяна на навигацията при скрол
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
+        var scrollDistance = $(window).scrollTop();
+        
+        if (scrollDistance > 100) {
             $('.navbar-custom').addClass('navbar-scrolled');
         } else {
             $('.navbar-custom').removeClass('navbar-scrolled');
         }
+        
+        // Актуализиране на активния линк при скролиране
+        $('.nav-link').each(function () {
+            var targetAttr = $(this).attr('href');
+            if(targetAttr && targetAttr.startsWith('#') && targetAttr.length > 1) {
+                var targetSection = $(targetAttr);
+                if (targetSection.length) {
+                    var sectionTop = targetSection.offset().top - 120;
+                    var sectionBottom = sectionTop + targetSection.outerHeight();
+                    
+                    if (scrollDistance >= sectionTop && scrollDistance < sectionBottom) {
+                        $('.nav-link').removeClass('active');
+                        $(this).addClass('active');
+                    }
+                }
+            }
+        });
     });
 }
 
@@ -497,8 +516,11 @@ function initMobileMenu() {
     });
 
     $('.mobile-nav-link').off('click').on('click', function () {
-        $('#navbarNav').removeClass('show');
-        $('#mobile-menu-btn').removeClass('active');
+        if(window.innerWidth < 992) {
+            $('#navbarNav').removeClass('show');
+            $('#mobile-menu-btn').removeClass('active');
+            try { $('#navbarNav').collapse('hide'); } catch(e) {}
+        }
     });
 
     $(document).off('click.mobileMenu').on('click.mobileMenu', function (e) {
