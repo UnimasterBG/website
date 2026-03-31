@@ -51,26 +51,28 @@
                 </div>
             </a>
 
-            <!-- Mobile toggle - работещ вариант -->
-            <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="mobile-menu-btn">
-                <span class="toggler-line"></span>
-                <span class="toggler-line"></span>
-                <span class="toggler-line"></span>
-            </button>
-
-            <!-- Navigation Menu -->
-
-            <!-- Contact Info -->
-            <div class="navbar-contact">
-                <div class="contact-number">
-                    <a href="tel:+359899172879" class="phone-link">
-                        <i class="fas fa-phone phone-icon"></i>
-                        <span class="phone-number">+359 899 172 879</span>
-                    </a>
+            <!-- Управление (Телефон + Меню) групирани, за да не падат на нов ред -->
+            <div class="d-flex align-items-center order-1 order-lg-3 ms-auto ms-lg-0">
+                <!-- Contact Info -->
+                <div class="navbar-contact me-2">
+                    <div class="contact-number">
+                        <a href="tel:+359899172879" class="phone-link px-2 px-lg-4" style="font-size: 0.9rem; padding-top: 8px; padding-bottom: 8px; min-width: auto; white-space: nowrap;">
+                            <i class="fas fa-phone phone-icon"></i>
+                            <span class="phone-number">+359 899 172 879</span>
+                        </a>
+                    </div>
                 </div>
+
+                <!-- Mobile toggle -->
+                <button class="navbar-toggler custom-toggler ms-1" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="mobile-menu-btn" style="padding: 0.25rem 0.5rem;">
+                    <span class="toggler-line"></span>
+                    <span class="toggler-line"></span>
+                    <span class="toggler-line"></span>
+                </button>
             </div>
-            <div class="collapse navbar-collapse" id="navbarNav">
+
+            <div class="collapse navbar-collapse order-2" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link mobile-nav-link" href="#home">
