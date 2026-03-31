@@ -496,7 +496,7 @@ $(window).load(function () {
     } catch (e) { console.error('Animations init failed:', e); }
 });
 
-// Backup: Mobile Menu Logic (ако не е дефинирана отвън)
+// Backup: Mobile Menu Logic
 function initMobileMenu() {
     console.log('Initializing mobile menu...');
 
@@ -507,25 +507,37 @@ function initMobileMenu() {
         var $target = $(target);
 
         if ($target.hasClass('show')) {
-            $target.removeClass('show');
+            $target.removeClass('show').hide();
             $(this).removeClass('active');
         } else {
-            $target.addClass('show');
+            $target.addClass('show').show();
             $(this).addClass('active');
         }
     });
 
     $('.mobile-nav-link').off('click').on('click', function () {
-        if(window.innerWidth < 992) {
-            $('#navbarNav').removeClass('show');
+        if ($('#mobile-menu-btn').is(':visible')) {
+            $('#navbarNav').removeClass('show').hide();
             $('#mobile-menu-btn').removeClass('active');
+            
             try { $('#navbarNav').collapse('hide'); } catch(e) {}
         }
     });
 
     $(document).off('click.mobileMenu').on('click.mobileMenu', function (e) {
         if (!$(e.target).closest('.navbar').length) {
-            $('#navbarNav').removeClass('show');
+            if ($('#mobile-menu-btn').is(':visible') && $('#navbarNav').hasClass('show')) {
+                $('#navbarNav').removeClass('show').hide();
+                $('#mobile-menu-btn').removeClass('active');
+                try { $('#navbarNav').collapse('hide'); } catch(e) {}
+            }
+        }
+    });
+
+    // Fix desktop resize bug when using jQuery hide
+    $(window).resize(function() {
+        if (window.innerWidth >= 992) {
+            $('#navbarNav').css('display', '');
             $('#mobile-menu-btn').removeClass('active');
         }
     });
