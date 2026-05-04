@@ -1,6 +1,104 @@
 /* УниМастер - Допълнителни стилове */
 
+/* === ПАРТНЬОРСКИ БАДЖ (ПЛАВАЩ) === */
+.partner-widget {
+    position: fixed;
+    top: 120px;
+    left: 20px;
+    z-index: 1050;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    padding: 15px;
+    text-align: center;
+    border: 2px solid #e67e22;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 160px;
+}
+.partner-widget:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+.partner-widget-label {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.partner-widget-logo {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+.partner-widget:hover .partner-widget-logo {
+    transform: scale(1.05);
+}
+.partner-widget-phone {
+    font-weight: 700;
+    color: #e67e22;
+    text-decoration: none;
+    font-size: 1.1rem;
+    background: rgba(230, 126, 34, 0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 100%;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.partner-widget-phone:hover {
+    background: #e67e22;
+    color: #fff;
+    text-decoration: none;
+}
+
+@media (max-width: 991px) {
+    .partner-widget {
+        top: 80px;
+        left: 10px;
+        width: 120px;
+        padding: 10px;
+    }
+    .partner-widget-label {
+        font-size: 0.7rem;
+    }
+    .partner-widget-phone {
+        font-size: 0.9rem;
+        padding: 4px 6px;
+    }
+}
+@media (max-width: 576px) {
+    .partner-widget {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        max-width: 300px;
+        margin: 80px auto -50px auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 15px;
+    }
+    .partner-widget-label {
+        display: none;
+    }
+    .partner-widget-logo {
+        max-width: 80px;
+        margin: 0;
+    }
+    .partner-widget-phone {
+        width: auto;
+        margin: 0;
+    }
+}
+
 /* Основни цветове за различните услуги */
+
 :root {
     /* Професионална палитра - Warm Construction Theme (Orange/Dark Grey) */
     --color-primary: #2c3e50;
